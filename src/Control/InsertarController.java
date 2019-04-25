@@ -68,7 +68,7 @@ public class InsertarController implements Initializable {
     private void onContinuar(ActionEvent event) {
         try {
             ((Node) (event.getSource())).getScene().getWindow().hide();
-            Parent parent = FXMLLoader.load(getClass().getResource("/Vista/Consulta.fxml"));
+            Parent parent = FXMLLoader.load(getClass().getResource("/Vista/FXMLDocument.fxml"));
             Stage stage = new Stage();
             Scene scene = new Scene(parent);
             //stage.setTitle("Login");

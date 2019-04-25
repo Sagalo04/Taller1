@@ -3,14 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package modelo;
+
 import java.sql.Timestamp;
+
 /**
  *
  * @author admin-sala3
  */
 public class Pelicula {
+
     private int film_id;
     private String title;
     private String description;
@@ -144,5 +146,5 @@ public class Pelicula {
     public void setLast_update(Timestamp last_update) {
         this.last_update = last_update;
     }
-    
+
 }
