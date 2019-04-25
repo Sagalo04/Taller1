@@ -6,6 +6,34 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.InsertarController">
-    
+
+<AnchorPane id="AnchorPane" prefHeight="434.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Control.InsertarController">
+   <children>
+      <Label layoutX="149.0" layoutY="43.0" text="Titulo*" />
+      <Label layoutX="148.0" layoutY="70.0" text="Descripcion" />
+      <Label layoutX="149.0" layoutY="99.0" text="Año de lanzamiento" />
+      <Label layoutX="149.0" layoutY="130.0" text="Lenguaje*" />
+      <Label layoutX="149.0" layoutY="157.0" text="Lenguaje Original" />
+      <Label layoutX="149.0" layoutY="190.0" text="rental duration*" />
+      <Label layoutX="149.0" layoutY="218.0" text="rental rate*" />
+      <Label layoutX="149.0" layoutY="244.0" text="duracion" />
+      <Label layoutX="148.0" layoutY="271.0" text="costo de remplazo*" />
+      <Label layoutX="148.0" layoutY="297.0" text="restriccion" />
+      <Label layoutX="148.0" layoutY="324.0" text="contenido extra" />
+      <Label layoutX="150.0" layoutY="353.0" text="ultima modificacion*" />
+      <TextField fx:id="Txtitulo" layoutX="290.0" layoutY="39.0" />
+      <TextField fx:id="Txdescripcion" layoutX="290.0" layoutY="66.0" />
+      <TextField fx:id="Txanio" layoutX="290.0" layoutY="95.0" />
+      <TextField fx:id="Txlenguaje" layoutX="290.0" layoutY="126.0" />
+      <TextField fx:id="Txlenguajeorg" layoutX="290.0" layoutY="153.0" />
+      <TextField fx:id="Txrentalduration" layoutX="290.0" layoutY="186.0" />
+      <TextField fx:id="Txrentalrate" layoutX="290.0" layoutY="214.0" />
+      <TextField fx:id="Txduration" layoutX="290.0" layoutY="240.0" />
+      <TextField fx:id="Txcosto" layoutX="290.0" layoutY="267.0" />
+      <TextField fx:id="Txrestriccion" layoutX="290.0" layoutY="293.0" />
+      <TextField fx:id="Txcontent" layoutX="290.0" layoutY="320.0" />
+      <TextField fx:id="Txupdate" layoutX="290.0" layoutY="349.0" />
+      <Button layoutX="190.0" layoutY="395.0" mnemonicParsing="false" onAction="#onContinuar" text="Continuar" />
+      <Button layoutX="315.0" layoutY="395.0" mnemonicParsing="false" onAction="#onCancelar" text="Cancelar" />
+   </children>
 </AnchorPane>
