@@ -26,7 +26,7 @@ public class Taller1 extends Application {
         stage.setScene(scene);
         stage.show();
     }
-
+//Comentario DD
     /**
      * @param args the command line arguments
      */
