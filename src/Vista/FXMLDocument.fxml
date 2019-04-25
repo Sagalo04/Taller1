@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="317.0" prefWidth="456.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="taller1.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="317.0" prefWidth="456.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Control.FXMLDocumentController">
     <children>
         <Button fx:id="button1" layoutX="23.0" layoutY="134.0" onAction="#handleButtonAction1" text="Insertar Pelicula" />
       <Button fx:id="button2" layoutX="173.0" layoutY="134.0" onAction="#handleButtonAction2" text="Modificar Pelicula" />
