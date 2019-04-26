@@ -24,4 +24,15 @@ public class ControlPelicula {
         
         return t;
     }    
+
+    boolean insertarCuenta(Pelicula objP) {
+        String sql = "[ call insertar_Pelicula(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        
+        boolean f = false;
+        
+        f = objP.insertarPelicula(sql,objP);
+        
+        return f;
+        
+    }
 }

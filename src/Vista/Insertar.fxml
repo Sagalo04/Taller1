@@ -32,7 +32,7 @@
       <TextField fx:id="Txcosto" layoutX="227.0" layoutY="304.0" prefHeight="25.0" prefWidth="280.0" />
       <TextField fx:id="Txrestriccion" layoutX="227.0" layoutY="336.0" prefHeight="25.0" prefWidth="280.0" />
       <TextField fx:id="Txcontent" layoutX="225.0" layoutY="368.0" prefHeight="25.0" prefWidth="280.0" />
-      <TextField fx:id="Txupdate" layoutX="383.0" layoutY="400.0" prefHeight="25.0" prefWidth="128.0" />
+      <TextField fx:id="Txhora" layoutX="383.0" layoutY="400.0" prefHeight="25.0" prefWidth="128.0" promptText="hh:mm:ss" />
       <Button layoutX="194.0" layoutY="455.0" mnemonicParsing="false" onAction="#onContinuar" text="Continuar" />
       <Button layoutX="339.0" layoutY="455.0" mnemonicParsing="false" onAction="#onCancelar" prefHeight="25.0" prefWidth="69.0" text="Cancelar" />
       <Label layoutX="233.0" layoutY="14.0" text="INSERTAR PELICULA">
@@ -40,6 +40,6 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <DatePicker layoutX="225.0" layoutY="400.0" prefHeight="25.0" prefWidth="134.0" />
+      <DatePicker fx:id="Txfecha" layoutX="225.0" layoutY="400.0" prefHeight="25.0" prefWidth="134.0" />
    </children>
 </AnchorPane>

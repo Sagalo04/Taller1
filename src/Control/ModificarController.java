@@ -72,16 +72,20 @@ public class ModificarController implements Initializable {
         
         try {
         ControlPelicula objcp=new ControlPelicula();
-        Pelicula objp = new Pelicula(modify_title.getText(), modify_descrip.getText(), Integer.parseInt(modify_anolanzamiento.getText()), Integer.parseInt(modify_lenguaje.getText()), Integer.parseInt(modify_lenguajeoriginal.getText()), Integer.parseInt(modify_rentalduration.getText()), Double.parseDouble(modify_rentalrate.getText()), Integer.parseInt(modify_duracion.getText()),Double.parseDouble(modify_costoremplazo.getText()),modify_restriccion.getText(),modify_contenidoextra.getText(),(Timestamp) modify_ultimamodif.getText());
+//        Pelicula objp = new Pelicula(modify_title.getText(), modify_descrip.getText(), Integer.parseInt(modify_anolanzamiento.getText()), 
+//                Integer.parseInt(modify_lenguaje.getText()), Integer.parseInt(modify_lenguajeoriginal.getText()), 
+//                Integer.parseInt(modify_rentalduration.getText()), Double.parseDouble(modify_rentalrate.getText()), 
+//                Integer.parseInt(modify_duracion.getText()),Double.parseDouble(modify_costoremplazo.getText()),
+//                modify_restriccion.getText(),modify_contenidoextra.getText(),(Timestamp) modify_ultimamodif.getText());
         
-        boolean f=objcp.modificarPelicula(objp);
+//        boolean f=objcp.modificarPelicula(objp);
         
-        if(f){
-            
-            System.out.println("Se modifico la pelicula");
-        }else{
-            System.out.println("No modifico la pelicula");
-        } 
+//        if(f){
+//            
+//            System.out.println("Se modifico la pelicula");
+//        }else{
+//            System.out.println("No modifico la pelicula");
+//        } 
 
         } catch (Exception e) {
         }

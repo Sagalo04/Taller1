@@ -151,4 +151,8 @@ public class Pelicula {
         this.last_update = last_update;
     }
 
+    public boolean insertarPelicula(String sql, Pelicula objP) {
+       
+    }
+
 }
