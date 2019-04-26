@@ -26,19 +26,19 @@
       <Label layoutX="97.0" layoutY="388.0" text="Contenido extra" />
       <Label layoutX="97.0" layoutY="357.0" text="Restricción" />
       <Label layoutX="97.0" layoutY="420.0" text="Última modificación*" />
-      <TextField id="modify_title" layoutX="226.0" layoutY="64.0" prefHeight="25.0" prefWidth="275.0" text="titulo" />
-      <TextField id="modify_descrip" layoutX="226.0" layoutY="96.0" prefHeight="25.0" prefWidth="275.0" />
-      <TextField id="modify_anolanzamiento" layoutX="226.0" layoutY="128.0" prefHeight="25.0" prefWidth="275.0" />
-      <TextField id="modify_lenguaje" layoutX="226.0" layoutY="160.0" prefHeight="25.0" prefWidth="275.0" />
-      <TextField id="modify_lenguajeoriginal" layoutX="226.0" layoutY="192.0" prefHeight="25.0" prefWidth="275.0" />
-      <TextField id="modify_rentalduration" layoutX="226.0" layoutY="224.0" prefHeight="25.0" prefWidth="275.0" />
-      <TextField id="modify_rentalrate" layoutX="226.0" layoutY="256.0" prefHeight="25.0" prefWidth="275.0" />
-      <TextField id="modify_duracion" layoutX="226.0" layoutY="288.0" prefHeight="25.0" prefWidth="275.0" />
-      <TextField id="modify_costoremplazo" layoutX="227.0" layoutY="320.0" prefHeight="25.0" prefWidth="275.0" />
-      <TextField id="modify_restriccion" layoutX="227.0" layoutY="352.0" prefHeight="25.0" prefWidth="275.0" />
-      <TextField id="modify_contenidoextra" layoutX="227.0" layoutY="384.0" prefHeight="25.0" prefWidth="275.0" />
-      <TextField id="modify_ultimamodif" layoutX="227.0" layoutY="416.0" prefHeight="25.0" prefWidth="275.0" />
-      <Button id="modify_borrar" layoutX="350.0" layoutY="474.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="67.0" text="Borrar" />
+      <TextField id="modify_title" disable="true" layoutX="226.0" layoutY="64.0" prefHeight="25.0" prefWidth="275.0" text="titulo" />
+      <TextField id="modify_descrip" disable="true" layoutX="226.0" layoutY="96.0" prefHeight="25.0" prefWidth="275.0" />
+      <TextField id="modify_anolanzamiento" disable="true" layoutX="226.0" layoutY="128.0" prefHeight="25.0" prefWidth="275.0" />
+      <TextField id="modify_lenguaje" disable="true" layoutX="226.0" layoutY="160.0" prefHeight="25.0" prefWidth="275.0" />
+      <TextField id="modify_lenguajeoriginal" disable="true" layoutX="226.0" layoutY="192.0" prefHeight="25.0" prefWidth="275.0" />
+      <TextField id="modify_rentalduration" disable="true" layoutX="226.0" layoutY="224.0" prefHeight="25.0" prefWidth="275.0" />
+      <TextField id="modify_rentalrate" disable="true" layoutX="226.0" layoutY="256.0" prefHeight="25.0" prefWidth="275.0" />
+      <TextField id="modify_duracion" disable="true" layoutX="226.0" layoutY="288.0" prefHeight="25.0" prefWidth="275.0" />
+      <TextField id="modify_costoremplazo" disable="true" layoutX="227.0" layoutY="320.0" prefHeight="25.0" prefWidth="275.0" />
+      <TextField id="modify_restriccion" disable="true" layoutX="227.0" layoutY="352.0" prefHeight="25.0" prefWidth="275.0" />
+      <TextField id="modify_contenidoextra" disable="true" layoutX="227.0" layoutY="384.0" prefHeight="25.0" prefWidth="275.0" />
+      <TextField id="modify_ultimamodif" disable="true" layoutX="227.0" layoutY="416.0" prefHeight="25.0" prefWidth="275.0" />
+      <Button id="modify_borrar" layoutX="350.0" layoutY="474.0" mnemonicParsing="false" onAction="#onCancel" prefHeight="25.0" prefWidth="67.0" text="Cancelar" />
       <Button id="modify_modif" layoutX="184.0" layoutY="474.0" mnemonicParsing="false" text="Modificar" />
    </children>
 </AnchorPane>
