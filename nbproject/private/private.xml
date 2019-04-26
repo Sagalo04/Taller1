@@ -3,10 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Dani%20D/Desktop/UAO%20-%208%20sem/Bases%20de%20datos/Taller%203/Taller1/src/ModeloP/Sakila.java</file>
-            <file>file:/C:/Users/Dani%20D/Desktop/UAO%20-%208%20sem/Bases%20de%20datos/Taller%203/Taller1/src/Vista/Insertar.fxml</file>
-            <file>file:/C:/Users/Dani%20D/Desktop/UAO%20-%208%20sem/Bases%20de%20datos/Taller%203/Taller1/src/Control/Taller1.java</file>
-            <file>file:/C:/Users/Dani%20D/Desktop/UAO%20-%208%20sem/Bases%20de%20datos/Taller%203/Taller1/src/Control/ConnectBD.java</file>
+            <file>file:/D:/Documents/GitHub/Taller1/src/Control/InsertarController.java</file>
+            <file>file:/D:/Documents/GitHub/Taller1/src/Control/ConsultaController.java</file>
+            <file>file:/D:/Documents/GitHub/Taller1/src/Vista/Consulta.fxml</file>
+            <file>file:/D:/Documents/GitHub/Taller1/src/ModeloP/Sakila.java</file>
         </group>
     </open-files>
 </project-private>

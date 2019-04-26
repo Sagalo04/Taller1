@@ -27,8 +27,8 @@ public class Pelicula {
     private String special_features;
     private Timestamp last_update;
 
-    public Pelicula(int film_id, String title, String description, int release_year, int language_id, int original_language, int rental_duration, double rental_rate, int length, double replacement_cost, String rating, String special_features, Timestamp last_update) {
-        this.film_id = film_id;
+    public Pelicula(String title, String description, int release_year, int language_id, int original_language, int rental_duration, double rental_rate, int length, double replacement_cost, String rating, String special_features, Timestamp last_update) {
+        //this.film_id = film_id;
         this.title = title;
         this.description = description;
         this.release_year = release_year;

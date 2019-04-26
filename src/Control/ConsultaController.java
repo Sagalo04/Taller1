@@ -6,6 +6,7 @@
 package Control;
 
 import java.net.URL;
+import java.util.Calendar;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
@@ -15,7 +16,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.StackPane;
+
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
@@ -37,8 +41,8 @@ public class ConsultaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
+    }
+
     @FXML
     private void btCancelar(ActionEvent event) {
         try {
@@ -53,19 +57,19 @@ public class ConsultaController implements Initializable {
             stage.show();
 
         } catch (Exception e) {
-            
+
         }
 
     }
-    
+
     @FXML
     private void onBuscar(ActionEvent event) {
         try {
-               //Para buscar
-              JOptionPane.showMessageDialog(null, "Busco");
+            //Para buscar
+            JOptionPane.showMessageDialog(null, "Busco");
         } catch (Exception e) {
-            
+
         }
     }
-    
+
 }

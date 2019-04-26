@@ -6,6 +6,7 @@
 package Control;
 
 import java.net.URL;
+import java.sql.Timestamp;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,6 +17,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import modelo.Pelicula;
 
 /**
  * FXML Controller class
@@ -66,6 +68,27 @@ public class InsertarController implements Initializable {
     
         @FXML
     private void onContinuar(ActionEvent event) {
+        
+                //se crea un objeto de controlPelicula con constructor vacio
+        ControlPelicula objPC = new ControlPelicula();
+        //Se crea una Pelicula nula
+            Pelicula objP = null;
+
+        boolean ins = false;
+
+        //Se llena el objeto de cuetna con todos sus atributos
+        try {
+            //objP = new Pelicula(Txtitulo.getText(), Txdescripcion.getText(), Integer.parseInt(Txanio.getText()), Integer.parseInt(Txlenguaje.getText()), 
+              //      Integer.parseInt(Txlenguajeorg.getText()), Integer.parseInt(Txrentalduration.getText()), Double.parseDouble(Txrentalrate.getText()),
+                //    Integer.parseInt(Txduration.getText()),Double.parseDouble(Txcosto.getText()),Txrestriccion.getText(),Txcontent.getText(),(Timestamp) Txupdate.getText());
+
+            //Se llama al metodo de controlcuenta para insertar
+            //ins = objCP.insertarCuenta(objP);
+
+        } catch (Exception e) {
+            System.out.println("ERROR " + e.toString());
+        }
+        
         try {
             ((Node) (event.getSource())).getScene().getWindow().hide();
             Parent parent = FXMLLoader.load(getClass().getResource("/Vista/FXMLDocument.fxml"));
