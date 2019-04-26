@@ -13,6 +13,10 @@ import java.sql.Timestamp;
  */
 public class Pelicula {
 
+    public static boolean modpelicula(String sql, Pelicula objp) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     private int film_id;
     private String title;
     private String description;
