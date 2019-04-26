@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="526.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="Control.ConsultaController">
+<AnchorPane id="AnchorPane" prefHeight="526.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.ConsultaController">
   <children>
     <Label layoutX="258.0" layoutY="39.0" prefWidth="84.0" text="CONSULTAS" textAlignment="CENTER">
       <font>
@@ -29,9 +29,9 @@
     <TextArea fx:id="txAReporte" layoutX="68.0" layoutY="272.0" prefHeight="227.0" prefWidth="474.0" wrapText="true" />
     <TextField id="txClienteC" fx:id="txFechaInicial" layoutX="142.0" layoutY="229.0" prefWidth="116.0" promptText="hh:mm:ss" />
     <TextField id="txClienteC" fx:id="txFechaFinal" layoutX="300.0" layoutY="229.0" prefWidth="116.0" promptText="hh:mm:ss" />
-    <Button id="btBuscar" fx:id="btCancelar" layoutX="452.0" layoutY="141.0" mnemonicParsing="false" text="Cancelar" />
-    <DatePicker fx:id="datepicker" GridPane.columnIndex="1" GridPane.rowIndex="2" layoutX="142.0" layoutY="198.0" prefWidth="116.0" />
-    <DatePicker fx:id="datepicker2" GridPane.columnIndex="1" GridPane.rowIndex="2" layoutX="300.0" layoutY="198.0" prefWidth="116.0" />
+    <Button id="btBuscar" fx:id="btCancelar" layoutX="452.0" layoutY="141.0" mnemonicParsing="false" onAction="#btCancelar" text="Cancelar" />
+    <DatePicker fx:id="datepicker" layoutX="142.0" layoutY="198.0" prefWidth="116.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+    <DatePicker fx:id="datepicker2" layoutX="300.0" layoutY="198.0" prefWidth="116.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
     <Label layoutX="89.0" layoutY="232.0" text="hora* :" />
   </children>
 </AnchorPane>

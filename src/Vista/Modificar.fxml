@@ -7,38 +7,41 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="525.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.ModificarController">
+<AnchorPane id="AnchorPane" prefHeight="577.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.ModificarController">
    <children>
       <Label layoutX="227.0" layoutY="21.0" text="MODIFICAR PELICULA">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="96.0" layoutY="68.0" text="Título*" />
-      <Label layoutX="96.0" layoutY="100.0" text="Descripción" />
-      <Label layoutX="95.0" layoutY="132.0" text="Año de lanzamiento" />
-      <Label layoutX="95.0" layoutY="164.0" text="Lenguaje*" />
-      <Label layoutX="96.0" layoutY="196.0" text="Lenguaje original" />
-      <Label layoutX="96.0" layoutY="228.0" text="Rental duration*" />
-      <Label layoutX="95.0" layoutY="260.0" text="Rental rate*" />
-      <Label layoutX="96.0" layoutY="292.0" text="Duración" />
-      <Label layoutX="95.0" layoutY="324.0" text="Costo de remplazo*" />
-      <Label layoutX="97.0" layoutY="388.0" text="Contenido extra" />
-      <Label layoutX="97.0" layoutY="357.0" text="Restricción" />
-      <Label layoutX="97.0" layoutY="420.0" text="Última modificación*" />
-      <TextField id="modify_title" disable="true" layoutX="226.0" layoutY="64.0" prefHeight="25.0" prefWidth="275.0" text="titulo" />
-      <TextField id="modify_descrip" disable="true" layoutX="226.0" layoutY="96.0" prefHeight="25.0" prefWidth="275.0" />
-      <TextField id="modify_anolanzamiento" disable="true" layoutX="226.0" layoutY="128.0" prefHeight="25.0" prefWidth="275.0" />
-      <TextField id="modify_lenguaje" disable="true" layoutX="226.0" layoutY="160.0" prefHeight="25.0" prefWidth="275.0" />
-      <TextField id="modify_lenguajeoriginal" disable="true" layoutX="226.0" layoutY="192.0" prefHeight="25.0" prefWidth="275.0" />
-      <TextField id="modify_rentalduration" disable="true" layoutX="226.0" layoutY="224.0" prefHeight="25.0" prefWidth="275.0" />
-      <TextField id="modify_rentalrate" disable="true" layoutX="226.0" layoutY="256.0" prefHeight="25.0" prefWidth="275.0" />
-      <TextField id="modify_duracion" disable="true" layoutX="226.0" layoutY="288.0" prefHeight="25.0" prefWidth="275.0" />
-      <TextField id="modify_costoremplazo" disable="true" layoutX="227.0" layoutY="320.0" prefHeight="25.0" prefWidth="275.0" />
-      <TextField id="modify_restriccion" disable="true" layoutX="227.0" layoutY="352.0" prefHeight="25.0" prefWidth="275.0" />
-      <TextField id="modify_contenidoextra" disable="true" layoutX="227.0" layoutY="384.0" prefHeight="25.0" prefWidth="275.0" />
-      <TextField id="modify_ultimamodif" disable="true" layoutX="227.0" layoutY="416.0" prefHeight="25.0" prefWidth="275.0" />
-      <Button id="modify_borrar" layoutX="350.0" layoutY="474.0" mnemonicParsing="false" onAction="#onCancel" prefHeight="25.0" prefWidth="67.0" text="Cancelar" />
-      <Button id="modify_modif" layoutX="184.0" layoutY="474.0" mnemonicParsing="false" text="Modificar" />
+      <Label layoutX="96.0" layoutY="112.0" text="Título*" />
+      <Label layoutX="96.0" layoutY="144.0" text="Descripción" />
+      <Label layoutX="95.0" layoutY="176.0" text="Año de lanzamiento" />
+      <Label layoutX="95.0" layoutY="208.0" text="Lenguaje*" />
+      <Label layoutX="96.0" layoutY="240.0" text="Lenguaje original" />
+      <Label layoutX="96.0" layoutY="272.0" text="Rental duration*" />
+      <Label layoutX="95.0" layoutY="304.0" text="Rental rate*" />
+      <Label layoutX="96.0" layoutY="336.0" text="Duración" />
+      <Label layoutX="95.0" layoutY="368.0" text="Costo de remplazo*" />
+      <Label layoutX="97.0" layoutY="432.0" text="Contenido extra" />
+      <Label layoutX="97.0" layoutY="401.0" text="Restricción" />
+      <Label layoutX="97.0" layoutY="464.0" text="Última modificación*" />
+      <TextField id="modify_title" disable="true" layoutX="226.0" layoutY="108.0" prefHeight="25.0" prefWidth="275.0" text="titulo" />
+      <TextField id="modify_descrip" disable="true" layoutX="226.0" layoutY="140.0" prefHeight="25.0" prefWidth="275.0" />
+      <TextField id="modify_anolanzamiento" disable="true" layoutX="226.0" layoutY="172.0" prefHeight="25.0" prefWidth="275.0" />
+      <TextField id="modify_lenguaje" disable="true" layoutX="226.0" layoutY="204.0" prefHeight="25.0" prefWidth="275.0" />
+      <TextField id="modify_lenguajeoriginal" disable="true" layoutX="226.0" layoutY="236.0" prefHeight="25.0" prefWidth="275.0" />
+      <TextField id="modify_rentalduration" disable="true" layoutX="226.0" layoutY="268.0" prefHeight="25.0" prefWidth="275.0" />
+      <TextField id="modify_rentalrate" disable="true" layoutX="226.0" layoutY="300.0" prefHeight="25.0" prefWidth="275.0" />
+      <TextField id="modify_duracion" disable="true" layoutX="226.0" layoutY="332.0" prefHeight="25.0" prefWidth="275.0" />
+      <TextField id="modify_costoremplazo" disable="true" layoutX="227.0" layoutY="364.0" prefHeight="25.0" prefWidth="275.0" />
+      <TextField id="modify_restriccion" disable="true" layoutX="227.0" layoutY="396.0" prefHeight="25.0" prefWidth="275.0" />
+      <TextField id="modify_contenidoextra" disable="true" layoutX="227.0" layoutY="428.0" prefHeight="25.0" prefWidth="275.0" />
+      <TextField id="modify_ultimamodif" disable="true" layoutX="227.0" layoutY="460.0" prefHeight="25.0" prefWidth="275.0" />
+      <Button id="modify_borrar" layoutX="348.0" layoutY="518.0" mnemonicParsing="false" onAction="#onCancel" prefHeight="25.0" prefWidth="67.0" text="Cancelar" />
+      <Button id="modify_modif" layoutX="187.0" layoutY="518.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="67.0" text="Aceptar" />
+      <TextField id="modify_id" layoutX="227.0" layoutY="76.0" prefHeight="25.0" prefWidth="191.0" />
+      <Label layoutX="96.0" layoutY="80.0" text="ID película" />
+      <Button layoutX="434.0" layoutY="76.0" mnemonicParsing="false" onAction="#onModificar" text="Modificar" />
    </children>
 </AnchorPane>

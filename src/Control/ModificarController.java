@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
@@ -23,6 +24,21 @@ import javafx.stage.Stage;
  */
 public class ModificarController implements Initializable {
 
+    @FXML
+    TextField modify_title;
+    TextField modify_id;
+    TextField modify_descrip;
+    TextField modify_anolanzamiento;
+    TextField modify_lenguaje;
+    TextField modify_lenguajeoriginal;
+    TextField modify_rentalduration;
+    TextField modify_rentalrate;
+    TextField modify_duracion;
+    TextField modify_costoremplazo;
+    TextField modify_restriccion;
+    TextField modify_contenidoextra;
+    TextField modify_ultimamodif;
+    
     /**
      * Initializes the controller class.
      */
@@ -32,7 +48,7 @@ public class ModificarController implements Initializable {
     
     } 
     
-        @FXML
+        @FXML 
     private void onCancel(ActionEvent event) {
         try {
             ((Node) (event.getSource())).getScene().getWindow().hide();
@@ -50,4 +66,17 @@ public class ModificarController implements Initializable {
 
     }
     
+        @FXML 
+    private void onModificar(ActionEvent event) {
+        String sql = "update film set title = ?, description = ?, release_year = ?, "+
+                "language_id = ?, original_language_id = ?, rental_duration = ?, "+
+                "rental_rate = ?, lenght = ?, repacement_cost = ?, rating = ?, "+
+                "special_features = ?, last_update = ?";
+        try {
+            
+
+        } catch (Exception e) {
+        }
+
+    }
 }
