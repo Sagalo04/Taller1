@@ -7,8 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="525.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Control.ModificarController">
+<AnchorPane id="AnchorPane" prefHeight="525.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.ModificarController">
    <children>
       <Label layoutX="227.0" layoutY="21.0" text="MODIFICAR PELICULA">
          <font>
@@ -27,7 +26,7 @@
       <Label layoutX="97.0" layoutY="388.0" text="Contenido extra" />
       <Label layoutX="97.0" layoutY="357.0" text="Restricción" />
       <Label layoutX="97.0" layoutY="420.0" text="Última modificación*" />
-      <TextField id="modify_title" layoutX="226.0" layoutY="64.0" prefHeight="25.0" prefWidth="275.0" />
+      <TextField id="modify_title" layoutX="226.0" layoutY="64.0" prefHeight="25.0" prefWidth="275.0" text="titulo" />
       <TextField id="modify_descrip" layoutX="226.0" layoutY="96.0" prefHeight="25.0" prefWidth="275.0" />
       <TextField id="modify_anolanzamiento" layoutX="226.0" layoutY="128.0" prefHeight="25.0" prefWidth="275.0" />
       <TextField id="modify_lenguaje" layoutX="226.0" layoutY="160.0" prefHeight="25.0" prefWidth="275.0" />
