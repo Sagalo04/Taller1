@@ -179,7 +179,7 @@ public class Pelicula {
                 f =true;
                 
             } catch (SQLException e) {
-                System.out.println(e);
+                System.out.println("Error Pelicula "+e);
                 return f;
             }
             

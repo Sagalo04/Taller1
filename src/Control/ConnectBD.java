@@ -13,21 +13,23 @@ import java.sql.*;
  * @author Dani D
  */
 public class ConnectBD {
-   
+
     Connection conexion;
     Statement st;
-    
-     public ConnectBD() {
+
+    public ConnectBD() {
         //conexion
     }
-     public Connection getConexion() {
+
+    public Connection getConexion() {
         return conexion;
     }
-     
+
     public Statement getSt() {
         return st;
     }
-      /**
+
+    /**
      * Método utilizado para establecer la conexión con la base de datos
      *
      * @return estado regresa el estado de la conexión, true si se estableció la
@@ -37,17 +39,20 @@ public class ConnectBD {
         try {
             Class.forName("com.mysql.jdbc.Driver");                                      //user  //pass
             conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/sakila", "root", "root");
+            System.out.println(conexion);
             st = conexion.createStatement();
         } catch (SQLException ex) {
             ex.printStackTrace();
+            System.out.println("Error CC1 "+ex);
             return false;
         } catch (ClassNotFoundException ex) {
-            ex.printStackTrace();
+            //ex.printStackTrace();
+            System.out.println("Eror CC2 "+ex);
+
             return false;
         }
 
         return true;
     }
-   
-}
 
+}
