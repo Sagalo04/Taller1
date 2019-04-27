@@ -5,6 +5,8 @@
  */
 package modelo;
 
+import Control.ConnectBD;
+import java.sql.CallableStatement;
 import java.sql.Timestamp;
 
 /**
@@ -152,6 +154,31 @@ public class Pelicula {
     }
 
     public boolean insertarPelicula(String sql, Pelicula objP) {
+        ConnectBD con = new ConnectBD();
+        CallableStatement stat = null;
+        
+        if (con.crearConexion()) {
+            try {
+                stat.setString(1, objP.getTitle());
+                stat.setString(2, objP.getDescription());
+                stat.setInt(3, objP.getRelease_year());
+                stat.setInt(4, objP.getLanguage_id());
+                stat.setInt(5, objP.getOriginal_language());
+                stat.setInt(6, objP.getRental_duration());
+                stat.setDouble(7, objP.getRental_rate());
+                stat.setInt(8, objP.getLength());
+                stat.setDouble(9, objP.getReplacement_cost());
+                stat.setString(10, objP.getRating());
+                stat.setString(11, objP.getSpecial_features());
+                stat.setTimestamp(12, objP.getLast_update());
+               
+                stat.execute();
+                
+                
+            } catch (Exception e) {
+            }
+            
+        }
        
     }
 
