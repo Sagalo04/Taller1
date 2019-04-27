@@ -7,6 +7,7 @@ package modelo;
 
 import Control.ConnectBD;
 import java.sql.CallableStatement;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 
 /**
@@ -154,6 +155,8 @@ public class Pelicula {
     }
 
     public boolean insertarPelicula(String sql, Pelicula objP) {
+        
+        boolean f = false;
         ConnectBD con = new ConnectBD();
         CallableStatement stat = null;
         
@@ -173,13 +176,15 @@ public class Pelicula {
                 stat.setTimestamp(12, objP.getLast_update());
                
                 stat.execute();
+                f =true;
                 
-                
-            } catch (Exception e) {
+            } catch (SQLException e) {
+                System.out.println(e);
+                return f;
             }
             
         }
-       
+       return f;
     }
 
 }

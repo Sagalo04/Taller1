@@ -122,9 +122,9 @@ public class InsertarController implements Initializable {
 
         //Se llena el objeto de cuetna con todos sus atributos
         try {
-            objP = new Pelicula(Txtitulo.getText(), Txdescripcion.getText(), Integer.parseInt(Txanio.getText()), Integer.parseInt(Txlenguaje.getText()), 
-                  Integer.parseInt(Txlenguajeorg.getText()), Integer.parseInt(Txrentalduration.getText()), Double.parseDouble(Txrentalrate.getText()),
-                Integer.parseInt(Txduration.getText()),Double.parseDouble(Txcosto.getText()),Txrestriccion.getText(),Txcontent.getText(),time);
+            objP = new Pelicula(Txtitulo.getText(), Txdescripcion.getText(), Integer.parseInt(Txanio.getText()), Integer.parseInt(Txlenguaje.getText()),
+                    Integer.parseInt(Txlenguajeorg.getText()), Integer.parseInt(Txrentalduration.getText()), Double.parseDouble(Txrentalrate.getText()),
+                    Integer.parseInt(Txduration.getText()), Double.parseDouble(Txcosto.getText()), Txrestriccion.getText(), Txcontent.getText(), time);
 
             //Se llama al metodo de controlcuenta para insertar
             ins = objCP.insertarCuenta(objP);
