@@ -26,7 +26,7 @@ public class ControlPelicula {
     }    
 
     boolean insertarCuenta(Pelicula objP) {
-        String sql = "[ call insertar_Pelicula(?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "[ call addFilm(?,?,?,?,?,?,?,?,?,?,?,?)";
         
         boolean f = false;
         
