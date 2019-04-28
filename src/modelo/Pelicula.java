@@ -8,6 +8,7 @@ package modelo;
 import Control.ConnectBD;
 import java.sql.CallableStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Timestamp;
 
 /**
@@ -16,8 +17,26 @@ import java.sql.Timestamp;
  */
 public class Pelicula {
 
-    public boolean modpelicula(String sql, Pelicula objp) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean modPelicula(String sql) {
+
+        boolean f = false;
+
+        //se establece la coneccion
+        ConnectBD objCon = new ConnectBD();
+
+        //Si hay coneccion se crea la sentencia y se ejecuta
+        if (objCon.crearConexion()) {
+            try {
+                Statement sentencia = objCon.getConexion().createStatement();
+                sentencia.executeUpdate(sql);
+                f = true;
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                f = false;
+            }
+        }
+        return f;
+        
     }
 
     private int film_id;

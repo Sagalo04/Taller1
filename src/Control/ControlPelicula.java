@@ -16,14 +16,14 @@ import modelo.Pelicula;
  */
 public class ControlPelicula {
 
-    public boolean modificarPelicula(Pelicula objp) {
+    public boolean modificarPelicula(Pelicula objp,int id) {
         boolean t = false;
-        String sql = "update film set title = ?, description = ?, release_year = ?, "
-                + "language_id = ?, original_language_id = ?, rental_duration = ?, "
-                + "rental_rate = ?, lenght = ?, repacement_cost = ?, rating = ?, "
-                + "special_features = ?, last_update = ? where film_id =" + objp.getFilm_id();
+        String sql = "update film set title = '"+ objp.getTitle() +"', description = '"+objp.getDescription()+"' , release_year ="+objp.getRelease_year()+", "
+                + "language_id ="+ objp.getLanguage_id() +", original_language_id = "+objp.getOriginal_language()+", rental_duration = "+objp.getRental_duration()+", "
+                + "rental_rate = "+objp.getRental_rate()+", lenght = "+objp.getLength()+", replacement_cost = "+objp.getReplacement_cost()+", rating = '"+objp.getRating()+"', "
+                + "special_features = '"+objp.getSpecial_features()+"', last_update = "+objp.getLast_update()+" where film_id =" + id;
 
-        t = objp.modpelicula(sql, objp);
+        t = objp.modPelicula(sql);
 
         return t;
     }
@@ -57,8 +57,8 @@ public class ControlPelicula {
                 rs = s.executeQuery(sql);
 
                 while (rs.next()) {
-                    System.out.println(rs.getString(2) + " " + rs.getString(3) + " " + rs.getInt(4) + " " + rs.getInt(5) + " " + rs.getInt(6) + " " + rs.getInt(7) + " " + rs.getDouble(8)
-                            + rs.getInt(9) + " " + rs.getDouble(10) + rs.getString(11) + " " + rs.getString(12) + rs.getTimestamp(13));
+//                    System.out.println(rs.getString(2) + " " + rs.getString(3) + " " + rs.getInt(4) + " " + rs.getInt(5) + " " + rs.getInt(6) + " " + rs.getInt(7) + " " + rs.getDouble(8)
+//                            + rs.getInt(9) + " " + rs.getDouble(10) + rs.getString(11) + " " + rs.getString(12) + rs.getTimestamp(13));
 
                     objP = new Pelicula(rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getDouble(8), rs.getInt(9), rs.getDouble(10),
                              rs.getString(11), rs.getString(12), rs.getTimestamp(13));

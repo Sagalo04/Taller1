@@ -40,7 +40,7 @@
     <TextField fx:id="modify_contenidoextra" disable="true" layoutX="227.0" layoutY="428.0" prefHeight="25.0" prefWidth="275.0" />
     <TextField fx:id="modify_ultimamodif" disable="true" layoutX="227.0" layoutY="460.0" prefHeight="25.0" prefWidth="275.0" />
     <Button layoutX="434.0" layoutY="76.0" mnemonicParsing="false" onAction="#onModificar" text="Modificar" />
-    <Button id="modify_modif" layoutX="187.0" layoutY="518.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="67.0" text="Aceptar" />
+    <Button id="modify_modif" layoutX="187.0" layoutY="518.0" mnemonicParsing="false" onAction="#onAceptar" prefHeight="25.0" prefWidth="67.0" text="Aceptar" />
     <Button id="modify_borrar" layoutX="348.0" layoutY="518.0" mnemonicParsing="false" onAction="#onCancel" prefHeight="25.0" prefWidth="67.0" text="Cancelar" />
     <Label layoutX="96.0" layoutY="80.0" text="ID película" />
   </children>

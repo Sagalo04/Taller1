@@ -55,9 +55,6 @@ public class InsertarController implements Initializable {
     TextField Txhora;
     @FXML
     DatePicker Txfecha;
-    
-    
-    
 
     /**
      * Initializes the controller class.
@@ -88,10 +85,6 @@ public class InsertarController implements Initializable {
 
     @FXML
     private void onContinuar(ActionEvent event) {
-        
-       
-       
-       
 
         String fech = Txfecha.getValue().toString();
         String hour = Txhora.getText();
@@ -121,8 +114,6 @@ public class InsertarController implements Initializable {
         //Se crea una Pelicula nula
         Pelicula objP = null;
 
-       
-        
         boolean ins = false;
 
         //Se llena el objeto de cuetna con todos sus atributos

@@ -6,6 +6,7 @@
 package Control;
 
 import java.net.URL;
+import java.sql.Timestamp;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,7 +26,7 @@ import modelo.Pelicula;
  * @author admin-sala3
  */
 public class ModificarController implements Initializable {
-    
+
     @FXML
     TextField modify_title;
     @FXML
@@ -53,15 +54,17 @@ public class ModificarController implements Initializable {
     @FXML
     TextField modify_ultimamodif;
 
+    int id;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-
+        
+        
     }
-    
+
     @FXML
     private void onCancel(ActionEvent event) {
         try {
@@ -72,22 +75,65 @@ public class ModificarController implements Initializable {
             //stage.setTitle("Login");
 
             stage.setScene(scene);
-            
+
             stage.show();
-            
+
         } catch (Exception e) {
         }
-        
+
     }
-    
+
+    @FXML
+    private void onAceptar(ActionEvent event) {
+        
+        String fh = modify_ultimamodif.getText();
+        
+        String splt[] = fh.split(" ");
+        
+        String sp1[] = splt[0].split("-");
+        
+        for (int i = 0; i < sp1.length; i++) {
+            System.out.println(sp1[i]);
+        }
+        
+        String sp2[] = splt[1].split(":");
+        
+        for (int i = 0; i < sp2.length; i++) {
+            System.out.println(sp2[i]);
+        }
+        
+               Timestamp time = new Timestamp(Integer.parseInt(sp1[0]) - 1900, Integer.parseInt(sp1[1]) - 1,
+               Integer.parseInt(sp1[2]), Integer.parseInt(sp2[0]),
+                Integer.parseInt(sp2[1]), Integer.parseInt(sp2[2]), 0);
+        
+        ControlPelicula objCP = new ControlPelicula();
+        
+        Pelicula objP = new Pelicula(modify_title.getText(), modify_descrip.getText(), Integer.parseInt(modify_anolanzamiento.getText()), Integer.parseInt(modify_lenguaje.getText()),
+                    Integer.parseInt(modify_lenguajeoriginal.getText()), Integer.parseInt(modify_rentalduration.getText()), Double.parseDouble(modify_rentalrate.getText()),
+                    Integer.parseInt(modify_duracion.getText()), Double.parseDouble(modify_costoremplazo.getText()), modify_restriccion.getText(), modify_contenidoextra.getText(), time);
+
+        try {
+            boolean f = objCP.modificarPelicula(objP, id);
+            if (f) {
+
+                System.out.println("Se modifico la pelicula");
+            } else {
+                System.out.println("No modifico la pelicula");
+            }
+
+        } catch (Exception e) {
+        }
+
+    }
+
     @FXML
     private void onModificar(ActionEvent event) {
-        
+
         try {
             ControlPelicula objCP = new ControlPelicula();
-            
-            int id = Integer.parseInt(modify_id.getText());
-            
+
+            id = Integer.parseInt(modify_id.getText());
+
             Pelicula objP = objCP.consultModPelicula(id);
             System.out.println(objP.getLast_update().toString());
             modify_title.setText(objP.getTitle());
@@ -102,9 +148,7 @@ public class ModificarController implements Initializable {
             modify_restriccion.setText(objP.getRating());
             modify_contenidoextra.setText(objP.getSpecial_features());
             modify_ultimamodif.setText(objP.getLast_update().toString());
-            
-            System.out.println(objP.getLast_update().toString());
-            
+
             modify_title.setDisable(false);
             modify_descrip.setDisable(false);
             modify_anolanzamiento.setDisable(false);
@@ -118,25 +162,16 @@ public class ModificarController implements Initializable {
             modify_contenidoextra.setDisable(false);
             modify_ultimamodif.setDisable(false);
 
-            //modify_ultimamodif.setText(objP.()+"");
-            //ControlPelicula objcp=new ControlPelicula();
 //        Pelicula objp = new Pelicula(modify_title.getText(), modify_descrip.getText(), Integer.parseInt(modify_anolanzamiento.getText()), 
 //                Integer.parseInt(modify_lenguaje.getText()), Integer.parseInt(modify_lenguajeoriginal.getText()), 
 //                Integer.parseInt(modify_rentalduration.getText()), Double.parseDouble(modify_rentalrate.getText()), 
 //                Integer.parseInt(modify_duracion.getText()),Double.parseDouble(modify_costoremplazo.getText()),
 //                modify_restriccion.getText(),modify_contenidoextra.getText(),(Timestamp) modify_ultimamodif.getText());
-//        boolean f=objcp.modificarPelicula(objp);
-//        if(f){
-//            
-//            System.out.println("Se modifico la pelicula");
-//        }else{
-//            System.out.println("No modifico la pelicula");
-//        } 
         } catch (Exception e) {
             System.out.println("ERROR" + e);
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Datos Erroneos Por Favor Verifique", "Error buscar Pelicula", JOptionPane.ERROR_MESSAGE, null);
         }
-        
+
     }
 }
