@@ -125,7 +125,7 @@ public class InsertarController implements Initializable {
                     Integer.parseInt(Txduration.getText()), Double.parseDouble(Txcosto.getText()), Txrestriccion.getText(), Txcontent.getText(), time);
 
             //Se llama al metodo de controlcuenta para insertar
-            ins = objCP.insertarCuenta(objP);
+            ins = objCP.insertarPelicula(objP);
         } catch (Exception e) {
             System.out.println("ERROR " + e.toString());
         }
