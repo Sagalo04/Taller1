@@ -23,13 +23,13 @@ public class ControlPelicula {
                 + "rental_rate = ?, lenght = ?, repacement_cost = ?, rating = ?, "
                 + "special_features = ?, last_update = ? where film_id =" + objp.getFilm_id();
 
-        t = Pelicula.modpelicula(sql, objp);
+        t = objp.modpelicula(sql, objp);
 
         return t;
     }
 
     boolean insertarPelicula(Pelicula objP) {
-        String sql = "{ call addFilm(?,?,?,?,?,?,?,?,?,?,?,?) }";
+        String sql = "{ call añadir_movie(?,?,?,?,?,?,?,?,?,?,?,?) }";
 
         boolean f = false;
 
