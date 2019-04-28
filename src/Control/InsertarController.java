@@ -54,10 +54,10 @@ public class InsertarController implements Initializable {
     TextField Txhora;
     @FXML
     DatePicker Txfecha;
+    
+    
+    
 
-    Date a;
-
-    //Timestamp time = new Timestamp
     /**
      * Initializes the controller class.
      */
@@ -68,8 +68,6 @@ public class InsertarController implements Initializable {
 
     @FXML
     private void onCancelar(ActionEvent event) {
-
-        Date a = new Date();
 
         try {
             ((Node) (event.getSource())).getScene().getWindow().hide();

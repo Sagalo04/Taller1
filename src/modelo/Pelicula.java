@@ -162,6 +162,9 @@ public class Pelicula {
         
         if (con.crearConexion()) {
             try {
+                
+                stat = con.getConexion().prepareCall(sql);
+                
                 stat.setString(1, objP.getTitle());
                 stat.setString(2, objP.getDescription());
                 stat.setInt(3, objP.getRelease_year());
