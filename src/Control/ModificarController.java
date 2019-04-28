@@ -89,7 +89,7 @@ public class ModificarController implements Initializable {
             int id = Integer.parseInt(modify_id.getText());
             
             Pelicula objP = objCP.consultModPelicula(id);
-            
+            System.out.println(objP.getLast_update().toString());
             modify_title.setText(objP.getTitle());
             modify_descrip.setText(objP.getDescription());
             modify_anolanzamiento.setText(objP.getRelease_year() + "");
@@ -101,6 +101,9 @@ public class ModificarController implements Initializable {
             modify_costoremplazo.setText(objP.getReplacement_cost() + "");
             modify_restriccion.setText(objP.getRating());
             modify_contenidoextra.setText(objP.getSpecial_features());
+            modify_ultimamodif.setText(objP.getLast_update().toString());
+            
+            System.out.println(objP.getLast_update().toString());
             
             modify_title.setDisable(false);
             modify_descrip.setDisable(false);
@@ -113,8 +116,7 @@ public class ModificarController implements Initializable {
             modify_costoremplazo.setDisable(false);
             modify_restriccion.setDisable(false);
             modify_contenidoextra.setDisable(false);
-            
-            //modify_ultimamodif.setDisable(false);
+            modify_ultimamodif.setDisable(false);
 
             //modify_ultimamodif.setText(objP.()+"");
             //ControlPelicula objcp=new ControlPelicula();

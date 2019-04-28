@@ -7,6 +7,7 @@ package Control;
 
 import java.net.URL;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -87,6 +88,10 @@ public class InsertarController implements Initializable {
 
     @FXML
     private void onContinuar(ActionEvent event) {
+        
+       
+       
+       
 
         String fech = Txfecha.getValue().toString();
         String hour = Txhora.getText();
@@ -116,6 +121,8 @@ public class InsertarController implements Initializable {
         //Se crea una Pelicula nula
         Pelicula objP = null;
 
+       
+        
         boolean ins = false;
 
         //Se llena el objeto de cuetna con todos sus atributos
