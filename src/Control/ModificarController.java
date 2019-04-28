@@ -7,6 +7,7 @@ package Control;
 
 import java.net.URL;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -102,15 +103,19 @@ public class ModificarController implements Initializable {
             System.out.println(sp2[i]);
         }
         
-               Timestamp time = new Timestamp(Integer.parseInt(sp1[0]) - 1900, Integer.parseInt(sp1[1]) - 1,
-               Integer.parseInt(sp1[2]), Integer.parseInt(sp2[0]),
-                Integer.parseInt(sp2[1]), Integer.parseInt(sp2[2]), 0);
+                Date a = new Date();
+        
+        Timestamp ti = new Timestamp(a.getTime());
+        
+//               Timestamp time = new Timestamp(Integer.parseInt(sp1[0]) - 1900, Integer.parseInt(sp1[1]) - 1,
+//               Integer.parseInt(sp1[2]), Integer.parseInt(sp2[0]),
+//                Integer.parseInt(sp2[0]), Integer.parseInt(sp2[1]), 0);
         
         ControlPelicula objCP = new ControlPelicula();
         
         Pelicula objP = new Pelicula(modify_title.getText(), modify_descrip.getText(), Integer.parseInt(modify_anolanzamiento.getText()), Integer.parseInt(modify_lenguaje.getText()),
                     Integer.parseInt(modify_lenguajeoriginal.getText()), Integer.parseInt(modify_rentalduration.getText()), Double.parseDouble(modify_rentalrate.getText()),
-                    Integer.parseInt(modify_duracion.getText()), Double.parseDouble(modify_costoremplazo.getText()), modify_restriccion.getText(), modify_contenidoextra.getText(), time);
+                    Integer.parseInt(modify_duracion.getText()), Double.parseDouble(modify_costoremplazo.getText()), modify_restriccion.getText(), modify_contenidoextra.getText(), ti);
 
         try {
             boolean f = objCP.modificarPelicula(objP, id);

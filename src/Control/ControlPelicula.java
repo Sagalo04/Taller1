@@ -5,9 +5,12 @@
  */
 package Control;
 
+import com.sun.org.apache.bcel.internal.generic.AALOAD;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
+import java.util.Date;
 import modelo.Pelicula;
 
 /**
@@ -17,11 +20,16 @@ import modelo.Pelicula;
 public class ControlPelicula {
 
     public boolean modificarPelicula(Pelicula objp,int id) {
+        
+        Date a = new Date();
+        
+        Timestamp ti = new Timestamp(a.getTime());
+        
         boolean t = false;
         String sql = "update film set title = '"+ objp.getTitle() +"', description = '"+objp.getDescription()+"' , release_year ="+objp.getRelease_year()+", "
                 + "language_id ="+ objp.getLanguage_id() +", original_language_id = "+objp.getOriginal_language()+", rental_duration = "+objp.getRental_duration()+", "
-                + "rental_rate = "+objp.getRental_rate()+", lenght = "+objp.getLength()+", replacement_cost = "+objp.getReplacement_cost()+", rating = '"+objp.getRating()+"', "
-                + "special_features = '"+objp.getSpecial_features()+"', last_update = "+objp.getLast_update()+" where film_id =" + id;
+                + "rental_rate = "+objp.getRental_rate()+", length = "+objp.getLength()+", replacement_cost = "+objp.getReplacement_cost()+", rating = '"+objp.getRating()+"', "
+                + "special_features = '"+objp.getSpecial_features()+"', last_update = '"+ti+"' WHERE film_id =" + id;
 
         t = objp.modPelicula(sql);
 
