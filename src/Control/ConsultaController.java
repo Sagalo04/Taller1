@@ -154,5 +154,20 @@ public class ConsultaController implements Initializable {
             }
         }
     }
+    
+    @FXML
+    private void onBuscar1(ActionEvent event) {
+        
+    }
+    
+    @FXML
+    private void onBuscar2(ActionEvent event) {
+        
+    }
+    
+    @FXML
+    private void onBuscar3(ActionEvent event) {
+        
+    }
 
 }
