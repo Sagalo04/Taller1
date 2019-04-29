@@ -6,6 +6,9 @@
 package Control;
 
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Calendar;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -22,6 +25,7 @@ import javafx.scene.layout.StackPane;
 
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
+import modelo.Pelicula;
 
 /**
  * FXML Controller class
@@ -64,11 +68,37 @@ public class ConsultaController implements Initializable {
 
     @FXML
     private void onBuscar(ActionEvent event) {
-        try {
-            //Para buscar
-            JOptionPane.showMessageDialog(null, "Busco");
-        } catch (Exception e) {
+       
+        String idCliente = txClienteC.getText();
+        String TituloPeli = "";
+        
+        ConnectBD con = new ConnectBD();
+        String sql = "SELECT PI.title\n" +
+       "FROM sakila.film PI LEFT JOIN sakila.inventory I ON PI.inventory_id = I.inventory_id \n" +
+       "LEFT JOIN sakila.rental R ON I.film_id = R.film_id LEFT JOIN sakila.customer C ON  R.customer_id= C.customer_id where C.customer_id =" + idCliente;
 
+        ResultSet rs = null;
+
+        String r = "";
+
+        
+        if (con.crearConexion()) {
+            try {
+
+                Statement s = con.getConexion().createStatement();
+                rs = s.executeQuery(sql);
+
+                while (rs.next()) {
+                   
+                  TituloPeli = rs.getString("title");
+
+                }
+
+                con.getConexion().close();
+
+            } catch (SQLException e) {
+                System.out.println("ERROR CONSULTA " + e.toString());
+            }
         }
     }
 
