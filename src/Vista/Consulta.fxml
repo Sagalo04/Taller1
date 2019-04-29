@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="526.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.ConsultaController">
+<AnchorPane id="AnchorPane" prefHeight="569.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.ConsultaController">
   <children>
     <Label layoutX="258.0" layoutY="39.0" prefWidth="84.0" text="CONSULTAS" textAlignment="CENTER">
       <font>
@@ -15,9 +15,9 @@
       </font>
     </Label>
     <Label layoutX="68.0" layoutY="86.0" text="Cliente:" />
-    <Label layoutX="68.0" layoutY="127.0" text="Actor:" />
+    <Label layoutX="67.0" layoutY="127.0" text="Actor:" />
     <Label layoutX="66.0" layoutY="162.0" text="Genero:" />
-    <Label layoutX="69.0" layoutY="206.0" text="Rentas:" />
+    <Label layoutX="68.0" layoutY="206.0" text="Rentas:" />
     <TextField fx:id="txClienteC" layoutX="142.0" layoutY="83.0" prefWidth="200.0" />
     <TextField id="txClienteC" fx:id="txActorC" layoutX="142.0" layoutY="124.0" prefWidth="200.0" />
     <MenuButton fx:id="mnGeneros" layoutX="142.0" layoutY="163.0" mnemonicParsing="false" popupSide="BOTTOM" prefWidth="200.0" text="">
@@ -25,13 +25,16 @@
         <MenuItem mnemonicParsing="false" text="Terror" />
       </items>
     </MenuButton>
-    <Button fx:id="btBuscar" layoutX="452.0" layoutY="102.0" mnemonicParsing="false" onAction="#onBuscar" prefWidth="66.0" text="Buscar" />
-    <TextArea fx:id="txAReporte" layoutX="68.0" layoutY="272.0" prefHeight="227.0" prefWidth="474.0" wrapText="true" />
-    <TextField id="txClienteC" fx:id="txFechaInicial" layoutX="142.0" layoutY="229.0" prefWidth="116.0" promptText="hh:mm:ss" />
-    <TextField id="txClienteC" fx:id="txFechaFinal" layoutX="300.0" layoutY="229.0" prefWidth="116.0" promptText="hh:mm:ss" />
-    <Button id="btBuscar" fx:id="btCancelar" layoutX="452.0" layoutY="141.0" mnemonicParsing="false" onAction="#btCancelar" text="Cancelar" />
+    <Button fx:id="btBuscar" layoutX="472.0" layoutY="81.0" mnemonicParsing="false" onAction="#onBuscar" prefWidth="66.0" text="Buscar" />
+    <TextArea fx:id="txAReporte" layoutX="68.0" layoutY="274.0" prefHeight="227.0" prefWidth="474.0" wrapText="true" />
+    <TextField id="txClienteC" fx:id="txFechaInicial" layoutX="142.0" layoutY="233.0" prefWidth="116.0" promptText="hh:mm:ss" />
+    <TextField id="txClienteC" fx:id="txFechaFinal" layoutX="299.0" layoutY="233.0" prefWidth="116.0" promptText="hh:mm:ss" />
+    <Button id="btBuscar" fx:id="btCancelar" layoutX="269.0" layoutY="520.0" mnemonicParsing="false" onAction="#btCancelar" text="Cancelar" />
     <DatePicker fx:id="datepicker" layoutX="142.0" layoutY="198.0" prefWidth="116.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-    <DatePicker fx:id="datepicker2" layoutX="300.0" layoutY="198.0" prefWidth="116.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-    <Label layoutX="89.0" layoutY="232.0" text="hora* :" />
+    <DatePicker fx:id="datepicker2" layoutX="299.0" layoutY="198.0" prefWidth="116.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+    <Label layoutX="89.0" layoutY="236.0" text="hora* :" />
+      <Button fx:id="btBuscar1" layoutX="472.0" layoutY="124.0" mnemonicParsing="false" onAction="#onBuscar1" prefWidth="66.0" text="Buscar" />
+      <Button fx:id="btBuscar11" layoutX="472.0" layoutY="167.0" mnemonicParsing="false" onAction="#onBuscar2" prefWidth="66.0" text="Buscar" />
+      <Button fx:id="btBuscar111" layoutX="472.0" layoutY="215.0" mnemonicParsing="false" onAction="#onBuscar3" prefWidth="66.0" text="Buscar" />
   </children>
 </AnchorPane>
