@@ -37,9 +37,13 @@ public class ConsultaController implements Initializable {
 
     @FXML
     TextField txClienteC;
+    @FXML
     TextField txActorC;
+    @FXML
     TextField txFechaInicial;
+    @FXML
     TextField txFechaFinal;
+    @FXML
     TextArea txAReporte;
     /**
      * Initializes the controller class.
