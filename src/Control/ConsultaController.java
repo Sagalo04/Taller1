@@ -155,6 +155,7 @@ public class ConsultaController implements Initializable {
     
     @FXML
     private void onBuscar2(ActionEvent event) {
+        //Buscar de género
         
         String genero = mnGenero.getText();
         
