@@ -20,6 +20,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 import modelo.Pelicula;
 
 /**
@@ -161,6 +162,7 @@ public class InsertarController implements Initializable {
             stage.show();
         } catch (Exception e) {
             System.out.println("ERROR " + e.toString());
+            JOptionPane.showMessageDialog(null, "Datos Erroneos Por Favor Verifique", "Error al insertar Pelicula", JOptionPane.ERROR_MESSAGE, null);
         }
 
     }
