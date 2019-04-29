@@ -75,9 +75,9 @@ public class ConsultaController implements Initializable {
         String TituloPeli = "";
         
         ConnectBD con = new ConnectBD();
-        String sql = "SELECT PI.title\n" +
-       "FROM sakila.film PI LEFT JOIN sakila.inventory I ON PI.inventory_id = I.inventory_id \n" +
-       "LEFT JOIN sakila.rental R ON I.film_id = R.film_id LEFT JOIN sakila.customer C ON  R.customer_id= C.customer_id where C.customer_id =" + idCliente;
+        String sql = "SELECT title\n" +
+        "FROM sakila.film PI INNER JOIN sakila.inventory I ON PI.film_id = I.film_id \n" +
+        "INNER JOIN sakila.rental R ON I.inventory_id = R.inventory_id LEFT JOIN sakila.customer C ON  R.customer_id= C.customer_id where C.customer_id =" + idCliente;
 
         ResultSet rs = null;
 
@@ -93,7 +93,8 @@ public class ConsultaController implements Initializable {
                 while (rs.next()) {
                    
                   TituloPeli = rs.getString("title");
-                  txAReporte.setText(TituloPeli);
+                  System.out.println(TituloPeli + "\n");
+                  //txAReporte.setText(rs.getString("title"));
 
                 }
 
