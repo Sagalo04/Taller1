@@ -9,6 +9,7 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -235,9 +236,42 @@ public class ConsultaController implements Initializable {
         ConnectBD con = new ConnectBD();
         String sql = null;
 
-        if (fechaIni != null && fechaFinal != null) {
+        if (fechaIni != null && fechaFinal != null && datepicker.getValue() != null && datepicker2.getValue() != null) {
             //SQL para  Todas las rentas realizadas en un periodo de tiempo.
             /* OJO = No me sale el calendario ._. no puedo llamarlo */
+            String fechinicio = datepicker.getValue().toString();
+            String hourinicio = fechaIni;
+
+            String fechfinal = datepicker2.getValue().toString();
+            String hourfinal = fechaFinal;
+
+            System.out.println(fechinicio + " "+hourinicio);
+            System.out.println(fechfinal + " "+hourfinal);
+            String spfinicio[] = fechinicio.split("-");
+            for (int i = 0; i < spfinicio.length; i++) {
+                //System.out.println(spfinicio[i]);
+            }
+
+            String sphinicio[] = hourinicio.split(":");
+            for (int i = 0; i < sphinicio.length; i++) {
+                //System.out.println(sphinicio[i]);
+
+            }
+            System.out.println("\n FECHA FINAL");
+            String spffinal[] = fechfinal.split("-");
+            for (int i = 0; i < spffinal.length; i++) {
+                //System.out.println(spffinal[i]);
+            }
+
+            String sphfinal[] = hourfinal.split(":");
+            for (int i = 0; i < sphfinal.length; i++) {
+                //System.out.println(sphfinal[i]);
+            }
+//
+//            Timestamp time = new Timestamp(Integer.parseInt(sp1[0]) - 1900, Integer.parseInt(sp1[1]) - 1,
+//                    Integer.parseInt(sp1[2]), Integer.parseInt(sp2[0]),
+//                    Integer.parseInt(sp2[1]), Integer.parseInt(sp2[2]), 0);
+
             sql = "SELECT film.title as Pelicula,rental.rental_id as NumeroRenta, concat(customer.first_name,\" \",customer.last_name) as cliente ,rental.rental_date as FechaInicial,rental.return_date as FechaFinal \n"
                     + "FROM rental \n"
                     + "INNER JOIN customer INNER JOIN film \n"
