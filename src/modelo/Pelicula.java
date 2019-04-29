@@ -213,7 +213,8 @@ public class Pelicula {
                 sentencia.executeUpdate(sql);
                 f = true;
             } catch (SQLException ex) {
-                ex.printStackTrace();
+                System.out.println("ERROR EN PELICULA  "+ex.toString());
+                //ex.printStackTrace();
                 f = false;
             }
         }

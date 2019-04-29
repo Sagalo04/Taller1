@@ -19,38 +19,56 @@ import modelo.Pelicula;
  */
 public class ControlPelicula {
 
-    public boolean modificarPelicula(Pelicula objp,int id) {
-        
-        Date a = new Date();
-        
-        Timestamp ti = new Timestamp(a.getTime());
-        
-        String year,OL,L;
-        
-        if (objp.getRelease_year()==0) {
-            year=null;
-        }else{
-            year=objp.getRelease_year()+"";
-        }
-        if (objp.getOriginal_language()==0) {
-            OL=null;
-        }else{
-            OL=objp.getOriginal_language()+"";
-        }
-        if (objp.getLength()==0) {
-            L=null;
-        }else{
-            L=objp.getLength()+"";
-        }
-        
+    public boolean modificarPelicula(Pelicula objp, int id) {
         boolean t = false;
-        String sql = "update film set title = '"+ objp.getTitle() +"', description = '"+objp.getDescription()+"' , release_year ="+year+", "
-                + "language_id ="+ objp.getLanguage_id() +", original_language_id = "+OL+", rental_duration = "+objp.getRental_duration()+", "
-                + "rental_rate = "+objp.getRental_rate()+", length = "+L+", replacement_cost = "+objp.getReplacement_cost()+", rating = '"+objp.getRating()+"', "
-                + "special_features = '"+objp.getSpecial_features()+"', last_update = '"+ti+"' WHERE film_id =" + id;
+        try {
+            Date a = new Date();
 
-        t = objp.modPelicula(sql);
+            Timestamp ti = new Timestamp(a.getTime());
 
+            String year, OL, L, des,rat,sf;
+
+            if (objp.getRelease_year() == 0) {
+                year = null;
+            } else {
+                year = objp.getRelease_year() + "";
+            }
+            if (objp.getOriginal_language() == 0) {
+                OL = null;
+            } else {
+                OL = objp.getOriginal_language() + "";
+            }
+            if (objp.getLength() == 0) {
+                L = null;
+            } else {
+                L = objp.getLength() + "";
+            }
+            if (objp.getDescription() == null) {
+                des = null;
+            } else {
+                des = "'" + objp.getDescription() + "'";
+            }
+            if (objp.getRating()== null) {
+                rat = null;
+            } else {
+                rat = "'" + objp.getRating() + "'";
+            }
+            if (objp.getSpecial_features()== null) {
+                sf = null;
+            } else {
+                sf = "'" + objp.getSpecial_features() + "'";
+            }
+
+            String sql = "update film set title = '" + objp.getTitle() + "', description = " + des + " , release_year =" + year + ", "
+                    + "language_id =" + objp.getLanguage_id() + ", original_language_id = " + OL + ", rental_duration = " + objp.getRental_duration() + ", "
+                    + "rental_rate = " + objp.getRental_rate() + ", length = " + L + ", replacement_cost = " + objp.getReplacement_cost() + ", rating = " + rat + ", "
+                    + "special_features = " + sf + ", last_update = '" + ti + "' WHERE film_id =" + id;
+
+            t = objp.modPelicula(sql);
+
+        } catch (Exception e) {
+            System.out.println("ERRORes  " + e);
+        }
         return t;
     }
 
@@ -87,7 +105,7 @@ public class ControlPelicula {
 //                            + rs.getInt(9) + " " + rs.getDouble(10) + rs.getString(11) + " " + rs.getString(12) + rs.getTimestamp(13));
 
                     objP = new Pelicula(rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getDouble(8), rs.getInt(9), rs.getDouble(10),
-                             rs.getString(11), rs.getString(12), rs.getTimestamp(13));
+                            rs.getString(11), rs.getString(12), rs.getTimestamp(13));
 
                 }
 

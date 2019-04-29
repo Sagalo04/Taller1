@@ -152,6 +152,7 @@ public class ModificarController implements Initializable {
             }
 
         } catch (Exception e) {
+            System.out.println("ERROR CONT " + e.toString());
         }
 
     }
@@ -168,12 +169,24 @@ public class ModificarController implements Initializable {
             System.out.println(objP.getLast_update().toString());
             modify_title.setText(objP.getTitle());
             modify_descrip.setText(objP.getDescription());
-            modify_anolanzamiento.setText(objP.getRelease_year() + "");
+            if (objP.getRelease_year() == 0) {
+                modify_anolanzamiento.setText("");
+            } else {
+                modify_anolanzamiento.setText(objP.getRelease_year() + "");
+            }
             modify_lenguaje.setText(objP.getLanguage_id() + "");
-            modify_lenguajeoriginal.setText(objP.getOriginal_language() + "");
+            if (objP.getOriginal_language() == 0) {
+                modify_lenguajeoriginal.setText("");
+            } else {
+                modify_lenguajeoriginal.setText(objP.getOriginal_language() + "");
+            }
             modify_rentalduration.setText(objP.getRental_duration() + "");
             modify_rentalrate.setText(objP.getRental_rate() + "");
-            modify_duracion.setText(objP.getLength() + "");
+            if (objP.getLength()==0) {
+                modify_duracion.setText("");
+            } else {
+                modify_duracion.setText(objP.getLength() + "");
+            }
             modify_costoremplazo.setText(objP.getReplacement_cost() + "");
             modify_restriccion.setText(objP.getRating());
             modify_contenidoextra.setText(objP.getSpecial_features());
