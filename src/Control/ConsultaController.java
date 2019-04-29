@@ -21,6 +21,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.StackPane;
 
 import javafx.stage.Stage;
@@ -39,6 +40,7 @@ public class ConsultaController implements Initializable {
     TextField txActorC;
     TextField txFechaInicial;
     TextField txFechaFinal;
+    TextArea txAReporte;
     /**
      * Initializes the controller class.
      */
@@ -91,6 +93,7 @@ public class ConsultaController implements Initializable {
                 while (rs.next()) {
                    
                   TituloPeli = rs.getString("title");
+                  txAReporte.setText(TituloPeli);
 
                 }
 
