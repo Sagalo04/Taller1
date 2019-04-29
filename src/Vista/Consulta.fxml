@@ -19,27 +19,7 @@
     <Label layoutX="63.0" layoutY="162.0" text="Genero:" />
     <Label layoutX="65.0" layoutY="206.0" text="Rentas:" />
     <TextField fx:id="txClienteC" layoutX="139.0" layoutY="83.0" prefWidth="200.0" />
-    <TextField id="txClienteC" fx:id="txActorC" layoutX="139.0" layoutY="124.0" prefWidth="200.0" />
-    <MenuButton fx:id="mnGenero" layoutX="139.0" layoutY="163.0" mnemonicParsing="false" popupSide="BOTTOM" prefWidth="200.0" text="">
-      <items>
-        <MenuItem mnemonicParsing="false" text="Acción" />
-            <MenuItem mnemonicParsing="false" text="Animación" />
-            <MenuItem mnemonicParsing="false" text="Ciencia ficción" />
-            <MenuItem mnemonicParsing="false" text="Clásicos" />
-            <MenuItem mnemonicParsing="false" text="Comedia" />
-            <MenuItem mnemonicParsing="false" text="Deporte" />
-            <MenuItem mnemonicParsing="false" text="Documental" />
-            <MenuItem mnemonicParsing="false" text="Drama" />
-            <MenuItem mnemonicParsing="false" text="Extranjero" />
-            <MenuItem mnemonicParsing="false" text="Familia" />
-            <MenuItem mnemonicParsing="false" text="Horror" />
-            <MenuItem mnemonicParsing="false" text="Juegos" />
-            <MenuItem mnemonicParsing="false" text="Música" />
-            <MenuItem mnemonicParsing="false" text="Niños" />
-            <MenuItem mnemonicParsing="false" text="Nuevo" />
-            <MenuItem mnemonicParsing="false" text="Viajes" />
-      </items>
-    </MenuButton>
+    <TextField id="txClienteC" fx:id="txActorC" layoutX="139.0" layoutY="123.0" prefWidth="200.0" />
     <Button fx:id="btBuscar" layoutX="469.0" layoutY="81.0" mnemonicParsing="false" onAction="#onBuscar" prefWidth="66.0" text="Buscar" />
     <TextArea fx:id="txAReporte" layoutX="65.0" layoutY="274.0" prefHeight="227.0" prefWidth="474.0" wrapText="true" />
     <TextField id="txClienteC" fx:id="txFechaInicial" layoutX="139.0" layoutY="233.0" prefWidth="116.0" promptText="hh:mm:ss" />
@@ -49,7 +29,7 @@
     <DatePicker fx:id="datepicker2" layoutX="296.0" layoutY="198.0" prefWidth="116.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
     <Label layoutX="86.0" layoutY="236.0" text="hora* :" />
       <Button fx:id="btBuscar1" layoutX="469.0" layoutY="124.0" mnemonicParsing="false" onAction="#onBuscar1" prefWidth="66.0" text="Buscar" />
-      <Button fx:id="btBuscar11" layoutX="469.0" layoutY="167.0" mnemonicParsing="false" onAction="#onBuscar2" prefWidth="66.0" text="Buscar" />
+      <Button fx:id="btBuscar11" layoutX="139.0" layoutY="158.0" mnemonicParsing="false" onAction="#onBuscar2" prefHeight="25.0" prefWidth="156.0" text="Buscar películas de horror" />
       <Button fx:id="btBuscar111" layoutX="469.0" layoutY="215.0" mnemonicParsing="false" onAction="#onBuscar3" prefWidth="66.0" text="Buscar" />
   </children>
 </AnchorPane>

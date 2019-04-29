@@ -48,7 +48,10 @@ public class ConsultaController implements Initializable {
     @FXML
     TextArea txAReporte;
     @FXML
-    MenuButton  mnGenero;
+    DatePicker datepicker;
+    @FXML
+    DatePicker datepicker2;
+
     /**
      * Initializes the controller class.
      */
@@ -78,11 +81,11 @@ public class ConsultaController implements Initializable {
 
     @FXML
     private void onBuscar(ActionEvent event) {
-      
+
         String idCliente = txClienteC.getText();
         String nomCliente = txClienteC.getText();
         String TituloPeli = "";
-        
+
         ConnectBD con = new ConnectBD();
         String sql = null;
         /*String sql = "SELECT title\n" +
@@ -93,16 +96,19 @@ public class ConsultaController implements Initializable {
 
         String r = "";*/
         //-----------
-        
-        if (nomCliente != null){
-              //SQL para las peliculas que ha rentado un cliente
-            sql = "SELECT film.title as Pelicula\n" +
+
+        if (nomCliente != null) {
+            //SQL para las peliculas que ha rentado un cliente
+            sql = "SELECT title\n"
+                    + "FROM sakila.film PI INNER JOIN sakila.inventory I ON PI.film_id = I.film_id \n"
+                    + "INNER JOIN sakila.rental R ON I.inventory_id = R.inventory_id LEFT JOIN sakila.customer C ON  R.customer_id= C.customer_id where C.customer_id =" + idCliente;
+            /*"SELECT film.title as Pelicula\n" +
                     "FROM rental \n" +
                     "INNER JOIN customer INNER JOIN film\n" +
-                    "WHERE rental.customer_id=customer.customer_id AND customer.first_name =" + nomCliente;
-            System.out.println(nomCliente);      
+                    "WHERE rental.customer_id=customer.customer_id AND customer.first_name =" + nomCliente;*/
+            //System.out.println(nomCliente);      
         }
-        
+
         //--------
         ResultSet rs = null;
         String r = "";
@@ -114,10 +120,10 @@ public class ConsultaController implements Initializable {
                 rs = s.executeQuery(sql);
 
                 while (rs.next()) {
-                   
-                  TituloPeli = rs.getString("title");
-                  System.out.println(TituloPeli + "\n");
-                  //txAReporte.setText(rs.getString("title"));
+
+                    TituloPeli = rs.getString(1);
+                    System.out.println(TituloPeli + "\n");
+                    //txAReporte.setText(rs.getString("title"));
 
                 }
 
@@ -128,73 +134,139 @@ public class ConsultaController implements Initializable {
             }
         }
     }
-    
+
     @FXML
     private void onBuscar1(ActionEvent event) {
-        
+
         String nomActor = txActorC.getText();
-        
+        String TituloPeli = "";
+
         ConnectBD con = new ConnectBD();
         String sql = null;
-        
-        if(nomActor != null){
-            sql = "SELECT f.title\n" +
-                    "FROM  film f\n" +
-                    "JOIN film_actor fa \n" +
-                    "ON  f.film_id = fa.film_id\n" +
-                    "WHERE fa.actor_id IN ( \n" +
-                    "Select actor_id \n" +
-                    "FROM actor \n" +
-                    "WHERE concat(actor.first_name, \" \", actor.last_name) =" + nomActor;
+
+        if (nomActor != null) {
+            sql = "SELECT f.title\n"
+                    + "FROM  film f\n"
+                    + "JOIN film_actor fa \n"
+                    + "ON  f.film_id = fa.film_id\n"
+                    + "WHERE fa.actor_id IN ( \n"
+                    + "Select actor_id \n"
+                    + "FROM actor \n"
+                    + "WHERE actor_id = " + nomActor + ")";
+            //"WHERE concat(actor.first_name, \" \", actor.last_name) =" + nomActor;
             System.out.println(nomActor);
-            
-        ResultSet rs = null;
-        String r = "";
+
+            ResultSet rs = null;
+            String r = "";
+
+            if (con.crearConexion()) {
+                try {
+
+                    Statement s = con.getConexion().createStatement();
+                    rs = s.executeQuery(sql);
+
+                    while (rs.next()) {
+
+                        TituloPeli = rs.getString(1);
+                        System.out.println(TituloPeli + "\n");
+                        //txAReporte.setText(rs.getString("title"));
+
+                    }
+
+                    con.getConexion().close();
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    System.out.println("ERROR CONSULTA " + e.toString());
+                }
+            }
         }
     }
-    
+
     @FXML
     private void onBuscar2(ActionEvent event) {
         //Buscar de género
-        
-        String genero = mnGenero.getText();
-        
+
+        String TituloPeli = "";
+
         ConnectBD con = new ConnectBD();
         String sql = null;
-        
-        if(genero != null){
-                
-            sql = "SELECT f.title\n" +
-                    "FROM film f \n" +
-                    "INNER JOIN film_category fc ON f.film_id = fc.film_id\n" +
-                    "INNER JOIN category c ON fc.category_id = c.category_id\n" +
-                    //"WHERE c.name =" + genero ;
-                    "WHERE c.name = 'Horror'" ;  
-            
+
+        sql = "SELECT f.title\n"
+                + "FROM film f \n"
+                + "INNER JOIN film_category fc ON f.film_id = fc.film_id\n"
+                + "INNER JOIN category c ON fc.category_id = c.category_id\n"
+                + //"WHERE c.name =" + genero ;
+                "WHERE c.category_id = '11'";
+
         ResultSet rs = null;
         String r = "";
+
+        if (con.crearConexion()) {
+            try {
+
+                Statement s = con.getConexion().createStatement();
+                rs = s.executeQuery(sql);
+
+                while (rs.next()) {
+
+                    TituloPeli = rs.getString(1);
+                    System.out.println(TituloPeli + "\n");
+                    //txAReporte.setText(rs.getString("title"));
+
+                }
+
+                con.getConexion().close();
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+                System.out.println("ERROR CONSULTA " + e.toString());
+            }
         }
     }
-    
+
     @FXML
     private void onBuscar3(ActionEvent event) {
-        
+
         String fechaIni = txFechaInicial.getText();
         String fechaFinal = txFechaFinal.getText();
-        
+        String TituloPeli = "";
+
         ConnectBD con = new ConnectBD();
         String sql = null;
-        
-        if(fechaIni != null && fechaFinal != null){
+
+        if (fechaIni != null && fechaFinal != null) {
             //SQL para  Todas las rentas realizadas en un periodo de tiempo.
             /* OJO = No me sale el calendario ._. no puedo llamarlo */
-            sql =  "SELECT film.title as Pelicula,rental.rental_id as NumeroRenta, concat(customer.first_name,\" \",customer.last_name) as cliente ,rental.rental_date as FechaInicial,rental.return_date as FechaFinal \n"+
-                    "FROM rental \n"+
-                    "INNER JOIN customer INNER JOIN film \n"+
-                    "WHERE rental.customer_id=customer.customer_id AND rental.rental_date BETWEEN BETWEEN '2005-05-25 00:19:27 ' AND '2005-05-25 06:44:53'";     
-            
-        ResultSet rs = null;
-        String r = "";
+            sql = "SELECT film.title as Pelicula,rental.rental_id as NumeroRenta, concat(customer.first_name,\" \",customer.last_name) as cliente ,rental.rental_date as FechaInicial,rental.return_date as FechaFinal \n"
+                    + "FROM rental \n"
+                    + "INNER JOIN customer INNER JOIN film \n"
+                    + "WHERE rental.customer_id=customer.customer_id AND rental.rental_date BETWEEN '2005-05-25 00:19:27 ' AND '2005-05-25 06:44:53'";
+
+            ResultSet rs = null;
+            String r = "";
+
+            if (con.crearConexion()) {
+                try {
+
+                    Statement s = con.getConexion().createStatement();
+                    rs = s.executeQuery(sql);
+
+                    while (rs.next()) {
+
+                        TituloPeli = rs.getString(1);
+                        System.out.println(TituloPeli + "\n");
+                        //txAReporte.setText(rs.getString("title"));
+
+                    }
+
+                    con.getConexion().close();
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    System.out.println("ERROR CONSULTA " + e.toString());
+                }
+            }
         }
     }
 
