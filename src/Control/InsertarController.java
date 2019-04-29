@@ -88,7 +88,7 @@ public class InsertarController implements Initializable {
         try {
             String description = null;
             int release_year = 0;
-            int original_language_id = 1;
+            int original_language_id = 0;
             int length = 0;
             String rating = null;
             String special_features = null;

@@ -25,10 +25,28 @@ public class ControlPelicula {
         
         Timestamp ti = new Timestamp(a.getTime());
         
+        String year,OL,L;
+        
+        if (objp.getRelease_year()==0) {
+            year=null;
+        }else{
+            year=objp.getRelease_year()+"";
+        }
+        if (objp.getOriginal_language()==0) {
+            OL=null;
+        }else{
+            OL=objp.getOriginal_language()+"";
+        }
+        if (objp.getLength()==0) {
+            L=null;
+        }else{
+            L=objp.getLength()+"";
+        }
+        
         boolean t = false;
-        String sql = "update film set title = '"+ objp.getTitle() +"', description = '"+objp.getDescription()+"' , release_year ="+objp.getRelease_year()+", "
-                + "language_id ="+ objp.getLanguage_id() +", original_language_id = "+objp.getOriginal_language()+", rental_duration = "+objp.getRental_duration()+", "
-                + "rental_rate = "+objp.getRental_rate()+", length = "+objp.getLength()+", replacement_cost = "+objp.getReplacement_cost()+", rating = '"+objp.getRating()+"', "
+        String sql = "update film set title = '"+ objp.getTitle() +"', description = '"+objp.getDescription()+"' , release_year ="+year+", "
+                + "language_id ="+ objp.getLanguage_id() +", original_language_id = "+OL+", rental_duration = "+objp.getRental_duration()+", "
+                + "rental_rate = "+objp.getRental_rate()+", length = "+L+", replacement_cost = "+objp.getReplacement_cost()+", rating = '"+objp.getRating()+"', "
                 + "special_features = '"+objp.getSpecial_features()+"', last_update = '"+ti+"' WHERE film_id =" + id;
 
         t = objp.modPelicula(sql);

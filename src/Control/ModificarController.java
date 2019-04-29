@@ -56,14 +56,14 @@ public class ModificarController implements Initializable {
     TextField modify_ultimamodif;
 
     int id;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
-        
+
     }
 
     @FXML
@@ -86,36 +86,61 @@ public class ModificarController implements Initializable {
 
     @FXML
     private void onAceptar(ActionEvent event) {
-        
+
         String fh = modify_ultimamodif.getText();
-        
+
         String splt[] = fh.split(" ");
-        
+
         String sp1[] = splt[0].split("-");
-        
+
         for (int i = 0; i < sp1.length; i++) {
             System.out.println(sp1[i]);
         }
-        
+
         String sp2[] = splt[1].split(":");
-        
+
         for (int i = 0; i < sp2.length; i++) {
             System.out.println(sp2[i]);
         }
-        
-                Date a = new Date();
-        
+
+        Date a = new Date();
+
         Timestamp ti = new Timestamp(a.getTime());
-        
+
 //               Timestamp time = new Timestamp(Integer.parseInt(sp1[0]) - 1900, Integer.parseInt(sp1[1]) - 1,
 //               Integer.parseInt(sp1[2]), Integer.parseInt(sp2[0]),
 //                Integer.parseInt(sp2[0]), Integer.parseInt(sp2[1]), 0);
-        
+        String description = null;
+        int release_year = 0;
+        int original_language_id = 0;
+        int length = 0;
+        String rating = null;
+        String special_features = null;
+
+        if (!"".equals(modify_descrip.getText())) {
+            description = modify_descrip.getText();
+        }
+        if (!"".equals(modify_restriccion.getText())) {
+            rating = modify_restriccion.getText();
+        }
+        if (!"".equals(modify_contenidoextra.getText())) {
+            special_features = modify_contenidoextra.getText();
+        }
+        if (!"".equals(modify_anolanzamiento.getText())) {
+            release_year = Integer.parseInt(modify_anolanzamiento.getText());
+        }
+        if (!"".equals(modify_lenguajeoriginal.getText())) {
+            original_language_id = Integer.parseInt(modify_lenguajeoriginal.getText());
+        }
+        if (!"".equals(modify_duracion.getText())) {
+            length = Integer.parseInt(modify_duracion.getText());
+        }
+
         ControlPelicula objCP = new ControlPelicula();
-        
-        Pelicula objP = new Pelicula(modify_title.getText(), modify_descrip.getText(), Integer.parseInt(modify_anolanzamiento.getText()), Integer.parseInt(modify_lenguaje.getText()),
-                    Integer.parseInt(modify_lenguajeoriginal.getText()), Integer.parseInt(modify_rentalduration.getText()), Double.parseDouble(modify_rentalrate.getText()),
-                    Integer.parseInt(modify_duracion.getText()), Double.parseDouble(modify_costoremplazo.getText()), modify_restriccion.getText(), modify_contenidoextra.getText(), ti);
+
+        Pelicula objP = new Pelicula(modify_title.getText(), description, release_year, Integer.parseInt(modify_lenguaje.getText()),
+                original_language_id, Integer.parseInt(modify_rentalduration.getText()), Double.parseDouble(modify_rentalrate.getText()),
+                length, Double.parseDouble(modify_costoremplazo.getText()), rating, special_features, ti);
 
         try {
             boolean f = objCP.modificarPelicula(objP, id);
@@ -165,13 +190,8 @@ public class ModificarController implements Initializable {
             modify_costoremplazo.setDisable(false);
             modify_restriccion.setDisable(false);
             modify_contenidoextra.setDisable(false);
-            modify_ultimamodif.setDisable(false);
+            //modify_ultimamodif.setDisable(false);
 
-//        Pelicula objp = new Pelicula(modify_title.getText(), modify_descrip.getText(), Integer.parseInt(modify_anolanzamiento.getText()), 
-//                Integer.parseInt(modify_lenguaje.getText()), Integer.parseInt(modify_lenguajeoriginal.getText()), 
-//                Integer.parseInt(modify_rentalduration.getText()), Double.parseDouble(modify_rentalrate.getText()), 
-//                Integer.parseInt(modify_duracion.getText()),Double.parseDouble(modify_costoremplazo.getText()),
-//                modify_restriccion.getText(),modify_contenidoextra.getText(),(Timestamp) modify_ultimamodif.getText());
         } catch (Exception e) {
             System.out.println("ERROR" + e);
             e.printStackTrace();

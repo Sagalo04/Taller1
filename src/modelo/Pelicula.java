@@ -17,28 +17,6 @@ import java.sql.Timestamp;
  */
 public class Pelicula {
 
-    public boolean modPelicula(String sql) {
-
-        boolean f = false;
-
-        //se establece la coneccion
-        ConnectBD objCon = new ConnectBD();
-
-        //Si hay coneccion se crea la sentencia y se ejecuta
-        if (objCon.crearConexion()) {
-            try {
-                Statement sentencia = objCon.getConexion().createStatement();
-                sentencia.executeUpdate(sql);
-                f = true;
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-                f = false;
-            }
-        }
-        return f;
-        
-    }
-
     private int film_id;
     private String title;
     private String description;
@@ -174,39 +152,73 @@ public class Pelicula {
     }
 
     public boolean insertarPelicula(String sql, Pelicula objP) {
-        
+
         boolean f = false;
         ConnectBD con = new ConnectBD();
         CallableStatement stat = null;
-        
+
         if (con.crearConexion()) {
             try {
-                
+
                 stat = con.getConexion().prepareCall(sql);
-                
+
                 stat.setString(1, objP.getTitle());
                 stat.setString(2, objP.getDescription());
-                stat.setInt(3, objP.getRelease_year());
+                if (objP.getRelease_year() == 0) {
+                    stat.setString(3, null);
+                } else {
+                    stat.setInt(3, objP.getRelease_year());
+                }
                 stat.setInt(4, objP.getLanguage_id());
-                stat.setInt(5, objP.getOriginal_language());
+                if (objP.getOriginal_language() == 0) {
+                    stat.setString(5, null);
+                } else {
+                    stat.setInt(5, objP.getOriginal_language());
+                }
                 stat.setInt(6, objP.getRental_duration());
                 stat.setDouble(7, objP.getRental_rate());
-                stat.setInt(8, objP.getLength());
+                if (objP.getLength() == 0) {
+                    stat.setString(8, null);
+                } else {
+                    stat.setInt(8, objP.getLength());
+                }
                 stat.setDouble(9, objP.getReplacement_cost());
                 stat.setString(10, objP.getRating());
                 stat.setString(11, objP.getSpecial_features());
                 stat.setTimestamp(12, objP.getLast_update());
-               
+
                 stat.execute();
-                f =true;
-                
+                f = true;
+
             } catch (SQLException e) {
-                System.out.println("Error Pelicula "+e);
+                System.out.println("Error Pelicula " + e);
                 return f;
             }
-            
+
         }
-       return f;
+        return f;
+    }
+
+    public boolean modPelicula(String sql) {
+
+        boolean f = false;
+
+        //se establece la coneccion
+        ConnectBD objCon = new ConnectBD();
+
+        //Si hay coneccion se crea la sentencia y se ejecuta
+        if (objCon.crearConexion()) {
+            try {
+                Statement sentencia = objCon.getConexion().createStatement();
+                sentencia.executeUpdate(sql);
+                f = true;
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                f = false;
+            }
+        }
+        return f;
+
     }
 
 }
