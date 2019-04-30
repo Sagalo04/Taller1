@@ -138,46 +138,49 @@ public class ConsultaController implements Initializable {
                     "WHERE rental.customer_id=customer.customer_id AND customer.first_name =" + nomCliente;*/
             //System.out.println(nomCliente);      
             sql2 = "SELECT first_name,last_name FROM sakila.customer where customer_id =" + idCliente;
-        }
 
-        //--------
-        ResultSet rs = null;
-        ResultSet rs2 = null;
-        String r = "";
+            //--------
+            ResultSet rs = null;
+            ResultSet rs2 = null;
+            String r = "";
 
-        if (con.crearConexion()) {
-            try {
+            if (con.crearConexion()) {
+                try {
 
-                Statement s = con.getConexion().createStatement();
-                rs = s.executeQuery(sql);
-                while (rs.next()) {
-                    TituloPeli = rs.getString(1);
-                    System.out.println(TituloPeli + "\n");
-                    //txAReporte.setText(rs.getString("title"));
-                    tableView.getItems().add(new Persona("", "", TituloPeli));
+                    Statement s = con.getConexion().createStatement();
+                    rs = s.executeQuery(sql);
+                    while (rs.next()) {
+                        TituloPeli = rs.getString(1);
+                        System.out.println(TituloPeli + "\n");
+                        //txAReporte.setText(rs.getString("title"));
+                        tableView.getItems().add(new Persona("", "", TituloPeli));
+                    }
+                    rs2 = s.executeQuery(sql2);
+
+                    while (rs2.next()) {
+
+                        nombre = rs2.getString(1);
+                        apellido = rs2.getString(2);
+                        System.out.println(nombre + " " + apellido);
+                        //txAReporte.setText(rs.getString("title"));
+
+                    }
+
+                    TableColumn<String, Persona> column2 = new TableColumn<>("Cliente: " + nombre + " " + apellido + " ");
+                    //column2.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+                    tableView.getColumns().add(0, column2);
+
+                    con.getConexion().close();
+
+                } catch (SQLException e) {
+
+                    System.out.println("ERROR CONSULTA " + e.toString());
+                    e.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "Debe ingresar los datos correctamente", "Error al hacer busqueda", JOptionPane.ERROR_MESSAGE, null);
                 }
-                rs2 = s.executeQuery(sql2);
-
-                while (rs2.next()) {
-
-                    nombre = rs2.getString(1);
-                    apellido = rs2.getString(2);
-                    System.out.println(nombre + " " + apellido);
-                    //txAReporte.setText(rs.getString("title"));
-
-                }
-
-                TableColumn<String, Persona> column2 = new TableColumn<>("Cliente: " + nombre + " " + apellido + " ");
-                //column2.setCellValueFactory(new PropertyValueFactory<>("lastName"));
-                tableView.getColumns().add(0, column2);
-
-                con.getConexion().close();
-
-            } catch (SQLException e) {
-
-                System.out.println("ERROR CONSULTA " + e.toString());
-                e.printStackTrace();
             }
+        }else{
+            JOptionPane.showMessageDialog(null, "Debe ingresar los datos correctamente", "Error al hacer busqueda", JOptionPane.ERROR_MESSAGE, null);
         }
     }
 
@@ -252,8 +255,11 @@ public class ConsultaController implements Initializable {
                 } catch (SQLException e) {
                     e.printStackTrace();
                     System.out.println("ERROR CONSULTA " + e.toString());
+                    JOptionPane.showMessageDialog(null, "Debe ingresar los datos correctamente", "Error al hacer busqueda", JOptionPane.ERROR_MESSAGE, null);
                 }
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe ingresar los datos correctamente", "Error al hacer busqueda", JOptionPane.ERROR_MESSAGE, null);
         }
     }
 
@@ -306,6 +312,7 @@ public class ConsultaController implements Initializable {
             } catch (SQLException e) {
                 e.printStackTrace();
                 System.out.println("ERROR CONSULTA " + e.toString());
+                JOptionPane.showMessageDialog(null, "Error Inesperado", "Error al hacer busqueda", JOptionPane.ERROR_MESSAGE, null);
             }
         }
     }
@@ -379,8 +386,11 @@ public class ConsultaController implements Initializable {
                 } catch (SQLException e) {
                     e.printStackTrace();
                     System.out.println("ERROR CONSULTA " + e.toString());
+                    JOptionPane.showMessageDialog(null, "Debe ingresar los datos correctamente", "Error al hacer busqueda", JOptionPane.ERROR_MESSAGE, null);
                 }
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe ingresar todos los datos", "Error al hacer busqueda", JOptionPane.ERROR_MESSAGE, null);
         }
     }
 
