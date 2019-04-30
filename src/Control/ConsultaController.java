@@ -23,13 +23,17 @@ import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.StackPane;
 
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import modelo.Pelicula;
+import modelo.Persona;
 
 /**
  * FXML Controller class
@@ -52,6 +56,10 @@ public class ConsultaController implements Initializable {
     DatePicker datepicker;
     @FXML
     DatePicker datepicker2;
+    @FXML
+    TableView tableView;
+
+    int cont;
 
     /**
      * Initializes the controller class.
@@ -59,6 +67,7 @@ public class ConsultaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        cont = 0;
     }
 
     @FXML
@@ -87,8 +96,29 @@ public class ConsultaController implements Initializable {
         String nomCliente = txClienteC.getText();
         String TituloPeli = "";
 
+        String nombre = "", apellido = "";
         ConnectBD con = new ConnectBD();
-        String sql = null;
+        String sql = null, sql2 = null;
+
+        if (cont > 0) {
+            tableView.getColumns().removeAll(tableView.getColumns());
+            tableView.getItems().removeAll(tableView.getItems());
+        }
+
+        cont = 1;
+//        TableColumn<String, Persona> column1 = new TableColumn<>("First Name");
+//        column1.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+//
+//        TableColumn<String, Persona> column2 = new TableColumn<>("Last Name");
+//        column2.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+
+        TableColumn<String, Persona> column3 = new TableColumn<>("Pelicula");
+        column3.setCellValueFactory(new PropertyValueFactory<>("pelicula"));
+
+//        tableView.getColumns().add(column1);
+//        tableView.getColumns().add(column2);
+        tableView.getColumns().add(column3);
+
         /*String sql = "SELECT title\n" +
         "FROM sakila.film PI I NNER JOIN sakila.inventory I ON PI.film_id = I.film_id \n" +
         "INNER JOIN sakila.rental R ON I.inventory_id = R.inventory_id LEFT JOIN sakila.customer C ON  R.customer_id= C.customer_id where C.customer_id =" + idCliente;
@@ -97,7 +127,6 @@ public class ConsultaController implements Initializable {
 
         String r = "";*/
         //-----------
-
         if (nomCliente != null) {
             //SQL para las peliculas que ha rentado un cliente
             sql = "SELECT title\n"
@@ -108,10 +137,12 @@ public class ConsultaController implements Initializable {
                     "INNER JOIN customer INNER JOIN film\n" +
                     "WHERE rental.customer_id=customer.customer_id AND customer.first_name =" + nomCliente;*/
             //System.out.println(nomCliente);      
+            sql2 = "SELECT first_name,last_name FROM sakila.customer where customer_id =" + idCliente;
         }
 
         //--------
         ResultSet rs = null;
+        ResultSet rs2 = null;
         String r = "";
 
         if (con.crearConexion()) {
@@ -119,31 +150,58 @@ public class ConsultaController implements Initializable {
 
                 Statement s = con.getConexion().createStatement();
                 rs = s.executeQuery(sql);
-
                 while (rs.next()) {
-
                     TituloPeli = rs.getString(1);
                     System.out.println(TituloPeli + "\n");
+                    //txAReporte.setText(rs.getString("title"));
+                    tableView.getItems().add(new Persona("", "", TituloPeli));
+                }
+                rs2 = s.executeQuery(sql2);
+
+                while (rs2.next()) {
+
+                    nombre = rs2.getString(1);
+                    apellido = rs2.getString(2);
+                    System.out.println(nombre + " " + apellido);
                     //txAReporte.setText(rs.getString("title"));
 
                 }
 
+                TableColumn<String, Persona> column2 = new TableColumn<>("Cliente: " + nombre + " " + apellido + " ");
+                //column2.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+                tableView.getColumns().add(0, column2);
+
                 con.getConexion().close();
 
             } catch (SQLException e) {
+
                 System.out.println("ERROR CONSULTA " + e.toString());
+                e.printStackTrace();
             }
         }
     }
 
     @FXML
     private void onBuscar1(ActionEvent event) {
+        String nombre = "", apellido = "";
+
+        if (cont > 0) {
+            tableView.getColumns().removeAll(tableView.getColumns());
+            tableView.getItems().removeAll(tableView.getItems());
+        }
+
+        TableColumn<String, Persona> column3 = new TableColumn<>("Pelicula");
+        column3.setCellValueFactory(new PropertyValueFactory<>("pelicula"));
+
+        tableView.getColumns().add(column3);
+
+        cont = 1;
 
         String nomActor = txActorC.getText();
         String TituloPeli = "";
 
         ConnectBD con = new ConnectBD();
-        String sql = null;
+        String sql = null, sql2 = null;
 
         if (nomActor != null) {
             sql = "SELECT f.title\n"
@@ -155,9 +213,11 @@ public class ConsultaController implements Initializable {
                     + "FROM actor \n"
                     + "WHERE actor_id = " + nomActor + ")";
             //"WHERE concat(actor.first_name, \" \", actor.last_name) =" + nomActor;
+            sql2 = "Select first_name,last_name from actor where actor_id =" + nomActor;
             System.out.println(nomActor);
 
             ResultSet rs = null;
+            ResultSet rs2 = null;
             String r = "";
 
             if (con.crearConexion()) {
@@ -169,10 +229,23 @@ public class ConsultaController implements Initializable {
                     while (rs.next()) {
 
                         TituloPeli = rs.getString(1);
-                        System.out.println(TituloPeli + "\n");
+                        //System.out.println(TituloPeli + "\n");
+                        //txAReporte.setText(rs.getString("title"));
+                        tableView.getItems().add(new Persona("", "", TituloPeli));
+                    }
+                    rs2 = s.executeQuery(sql2);
+
+                    while (rs2.next()) {
+
+                        nombre = rs2.getString(1);
+                        apellido = rs2.getString(2);
+                        System.out.println(nombre + " " + apellido);
                         //txAReporte.setText(rs.getString("title"));
 
                     }
+                    TableColumn<String, Persona> column2 = new TableColumn<>("Actor: " + nombre + " " + apellido + " ");
+                    //column2.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+                    tableView.getColumns().add(0, column2);
 
                     con.getConexion().close();
 
@@ -187,6 +260,17 @@ public class ConsultaController implements Initializable {
     @FXML
     private void onBuscar2(ActionEvent event) {
         //Buscar de género
+        if (cont > 0) {
+            tableView.getColumns().removeAll(tableView.getColumns());
+            tableView.getItems().removeAll(tableView.getItems());
+        }
+
+        TableColumn<String, Persona> column3 = new TableColumn<>("Pelicula");
+        column3.setCellValueFactory(new PropertyValueFactory<>("pelicula"));
+
+        tableView.getColumns().add(column3);
+
+        cont = 1;
 
         String TituloPeli = "";
 
@@ -214,7 +298,7 @@ public class ConsultaController implements Initializable {
                     TituloPeli = rs.getString(1);
                     System.out.println(TituloPeli + "\n");
                     //txAReporte.setText(rs.getString("title"));
-
+                    tableView.getItems().add(new Persona("", "", TituloPeli));
                 }
 
                 con.getConexion().close();
@@ -245,8 +329,8 @@ public class ConsultaController implements Initializable {
             String fechfinal = datepicker2.getValue().toString();
             String hourfinal = fechaFinal;
 
-            System.out.println(fechinicio + " "+hourinicio);
-            System.out.println(fechfinal + " "+hourfinal);
+            System.out.println(fechinicio + " " + hourinicio);
+            System.out.println(fechfinal + " " + hourfinal);
             String spfinicio[] = fechinicio.split("-");
             for (int i = 0; i < spfinicio.length; i++) {
                 //System.out.println(spfinicio[i]);
@@ -288,7 +372,7 @@ public class ConsultaController implements Initializable {
 
                         TituloPeli = rs.getString(1);
                         int ida = rs.getInt(2);
-                        System.out.println(TituloPeli +" "+ ida);
+                        System.out.println(TituloPeli + " " + ida);
                         //txAReporte.setText(rs.getString("title"));
 
                     }
