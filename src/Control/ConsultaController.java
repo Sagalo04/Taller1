@@ -105,29 +105,15 @@ public class ConsultaController implements Initializable {
             tableView.getItems().removeAll(tableView.getItems());
         }
 
-        cont = 1;
-//        TableColumn<String, Persona> column1 = new TableColumn<>("First Name");
-//        column1.setCellValueFactory(new PropertyValueFactory<>("firstName"));
-//
-//        TableColumn<String, Persona> column2 = new TableColumn<>("Last Name");
-//        column2.setCellValueFactory(new PropertyValueFactory<>("lastName"));
-
-        TableColumn<String, Persona> column3 = new TableColumn<>("Pelicula");
-        column3.setCellValueFactory(new PropertyValueFactory<>("pelicula"));
-
-//        tableView.getColumns().add(column1);
-//        tableView.getColumns().add(column2);
-        tableView.getColumns().add(column3);
-
-        /*String sql = "SELECT title\n" +
-        "FROM sakila.film PI I NNER JOIN sakila.inventory I ON PI.film_id = I.film_id \n" +
-        "INNER JOIN sakila.rental R ON I.inventory_id = R.inventory_id LEFT JOIN sakila.customer C ON  R.customer_id= C.customer_id where C.customer_id =" + idCliente;
-
-        ResultSet rs = null;
-
-        String r = "";*/
         //-----------
-        if (nomCliente != null) {
+        if (nomCliente != "") {
+            cont = 1;
+
+            TableColumn<String, Persona> column3 = new TableColumn<>("Pelicula");
+            column3.setCellValueFactory(new PropertyValueFactory<>("pelicula"));
+
+            tableView.getColumns().add(column3);
+
             //SQL para las peliculas que ha rentado un cliente
             sql = "SELECT title\n"
                     + "FROM sakila.film PI INNER JOIN sakila.inventory I ON PI.film_id = I.film_id \n"
@@ -179,7 +165,7 @@ public class ConsultaController implements Initializable {
                     JOptionPane.showMessageDialog(null, "Debe ingresar los datos correctamente", "Error al hacer busqueda", JOptionPane.ERROR_MESSAGE, null);
                 }
             }
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Debe ingresar los datos correctamente", "Error al hacer busqueda", JOptionPane.ERROR_MESSAGE, null);
         }
     }
@@ -193,20 +179,19 @@ public class ConsultaController implements Initializable {
             tableView.getItems().removeAll(tableView.getItems());
         }
 
-        TableColumn<String, Persona> column3 = new TableColumn<>("Pelicula");
-        column3.setCellValueFactory(new PropertyValueFactory<>("pelicula"));
-
-        tableView.getColumns().add(column3);
-
-        cont = 1;
-
         String nomActor = txActorC.getText();
         String TituloPeli = "";
 
         ConnectBD con = new ConnectBD();
         String sql = null, sql2 = null;
 
-        if (nomActor != null) {
+        if (nomActor != "") {
+            TableColumn<String, Persona> column3 = new TableColumn<>("Pelicula");
+            column3.setCellValueFactory(new PropertyValueFactory<>("pelicula"));
+
+            tableView.getColumns().add(column3);
+
+            cont = 1;
             sql = "SELECT f.title\n"
                     + "FROM  film f\n"
                     + "JOIN film_actor fa \n"
