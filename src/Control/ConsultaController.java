@@ -272,10 +272,8 @@ public class ConsultaController implements Initializable {
 //                    Integer.parseInt(sp1[2]), Integer.parseInt(sp2[0]),
 //                    Integer.parseInt(sp2[1]), Integer.parseInt(sp2[2]), 0);
 
-            sql = "SELECT film.title as Pelicula,rental.rental_id as NumeroRenta, concat(customer.first_name,\" \",customer.last_name) as cliente ,rental.rental_date as FechaInicial,rental.return_date as FechaFinal \n"
-                    + "FROM rental \n"
-                    + "INNER JOIN customer INNER JOIN film \n"
-                    + "WHERE rental.customer_id=customer.customer_id AND rental.rental_date BETWEEN '2005-05-25 00:19:27 ' AND '2005-05-25 06:44:53'";
+            sql = "select concat(customer.first_name,' ',customer.last_name) as 'nombre', rental.rental_id as 'id renta'  "
+                    + "from customer inner join rental on customer.customer_id = rental.customer_id where rental.rental_date between '2005-05-25 00:19:27' and '2005-05-25 06:44:53'";
 
             ResultSet rs = null;
             String r = "";
@@ -289,7 +287,8 @@ public class ConsultaController implements Initializable {
                     while (rs.next()) {
 
                         TituloPeli = rs.getString(1);
-                        System.out.println(TituloPeli + "\n");
+                        int ida = rs.getInt(2);
+                        System.out.println(TituloPeli +" "+ ida);
                         //txAReporte.setText(rs.getString("title"));
 
                     }
