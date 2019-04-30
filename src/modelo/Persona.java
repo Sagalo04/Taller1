@@ -14,14 +14,21 @@ public class Persona {
     private String firstName = null;
     private String lastName = null;
     private String pelicula = null;
+    private int rentalid;
 
     public Persona() {
     }
 
-    public Persona(String firstName, String lastName,String Pelicula) {
+    public Persona(String firstName, String lastName, String Pelicula) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.pelicula = Pelicula;
+    }
+
+    public Persona(String firstName, String lastName, int rentalid) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.rentalid = rentalid;
     }
 
     public String getFirstName() {
@@ -48,5 +55,12 @@ public class Persona {
         this.pelicula = pelicula;
     }
 
-    
+    public int getRentalid() {
+        return rentalid;
+    }
+
+    public void setRentalid(int rentalid) {
+        this.rentalid = rentalid;
+    }
+
 }

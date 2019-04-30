@@ -316,48 +316,44 @@ public class ConsultaController implements Initializable {
         String fechaIni = txFechaInicial.getText();
         String fechaFinal = txFechaFinal.getText();
         String TituloPeli = "";
+        String nombre = "", apellido = "";
 
         ConnectBD con = new ConnectBD();
         String sql = null;
 
         if (fechaIni != null && fechaFinal != null && datepicker.getValue() != null && datepicker2.getValue() != null) {
+
+            if (cont > 0) {
+                tableView.getColumns().removeAll(tableView.getColumns());
+                tableView.getItems().removeAll(tableView.getItems());
+            }
+
+            cont = 1;
+            TableColumn<String, Persona> column1 = new TableColumn<>("First Name");
+            column1.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+
+            TableColumn<String, Persona> column2 = new TableColumn<>("Last Name");
+            column2.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+
+            TableColumn<String, Persona> column3 = new TableColumn<>("Id Renta");
+            column3.setCellValueFactory(new PropertyValueFactory<>("rentalid"));
+
+            tableView.getColumns().add(column1);
+            tableView.getColumns().add(column2);
+            tableView.getColumns().add(column3);
+
             //SQL para  Todas las rentas realizadas en un periodo de tiempo.
             /* OJO = No me sale el calendario ._. no puedo llamarlo */
-            String fechinicio = datepicker.getValue().toString();
-            String hourinicio = fechaIni;
+            String fechinicio = datepicker.getValue().toString() + fechaIni;
 
-            String fechfinal = datepicker2.getValue().toString();
-            String hourfinal = fechaFinal;
+            String fechfinal = datepicker2.getValue().toString() + fechaFinal;
 
-            System.out.println(fechinicio + " " + hourinicio);
-            System.out.println(fechfinal + " " + hourfinal);
-            String spfinicio[] = fechinicio.split("-");
-            for (int i = 0; i < spfinicio.length; i++) {
-                //System.out.println(spfinicio[i]);
-            }
-
-            String sphinicio[] = hourinicio.split(":");
-            for (int i = 0; i < sphinicio.length; i++) {
-                //System.out.println(sphinicio[i]);
-
-            }
-            System.out.println("\n FECHA FINAL");
-            String spffinal[] = fechfinal.split("-");
-            for (int i = 0; i < spffinal.length; i++) {
-                //System.out.println(spffinal[i]);
-            }
-
-            String sphfinal[] = hourfinal.split(":");
-            for (int i = 0; i < sphfinal.length; i++) {
-                //System.out.println(sphfinal[i]);
-            }
 //
 //            Timestamp time = new Timestamp(Integer.parseInt(sp1[0]) - 1900, Integer.parseInt(sp1[1]) - 1,
 //                    Integer.parseInt(sp1[2]), Integer.parseInt(sp2[0]),
 //                    Integer.parseInt(sp2[1]), Integer.parseInt(sp2[2]), 0);
-
-            sql = "select concat(customer.first_name,' ',customer.last_name) as 'nombre', rental.rental_id as 'id renta'  "
-                    + "from customer inner join rental on customer.customer_id = rental.customer_id where rental.rental_date between '2005-05-25 00:19:27' and '2005-05-25 06:44:53'";
+            sql = "select customer.first_name,customer.last_name, rental.rental_id as 'id renta'  "
+                    + "from customer inner join rental on customer.customer_id = rental.customer_id where rental.rental_date between '" + fechinicio + "' and '" + fechfinal + "'";
 
             ResultSet rs = null;
             String r = "";
@@ -370,11 +366,12 @@ public class ConsultaController implements Initializable {
 
                     while (rs.next()) {
 
-                        TituloPeli = rs.getString(1);
-                        int ida = rs.getInt(2);
-                        System.out.println(TituloPeli + " " + ida);
+                        nombre = rs.getString(1);
+                        apellido = rs.getString(2);
+                        int ida = rs.getInt(3);
                         //txAReporte.setText(rs.getString("title"));
 
+                        tableView.getItems().add(new Persona(nombre, apellido, ida));
                     }
 
                     con.getConexion().close();
